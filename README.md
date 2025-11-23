@@ -6,8 +6,16 @@
 
 ## Quick Start
 
+### CDN
+
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nocss-framework/dist/nocss.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dathims/nocss/dist/nocss.min.css">
+```
+
+### npm
+
+```bash
+npm install @dathims/nocss
 ```
 
 ```html
@@ -36,7 +44,7 @@ Full documentation available in [docs/README.md](docs/README.md)
 ## Installation
 
 ```bash
-npm install nocss-framework
+npm install @dathims/nocss
 ```
 
 ## Browser Support
@@ -47,10 +55,35 @@ Chrome 105+, Firefox 121+, Safari 15.4+, Edge 105+
 
 See [CONTRIBUTING.md](docs/CONTRIBUTING.md)
 
+## Support
+
+If you find NoCSS useful, consider supporting its development:
+
+### ☕ Buy Me a Coffee
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/YOUR_BMAC_USERNAME)
+
+### 🎉 Ko-fi
+[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?logo=ko-fi)](https://ko-fi.com/YOUR_KOFI_USERNAME)
+
+### ₿ Cryptocurrency
+
+**Bitcoin (BTC)**
+```
+YOUR_BITCOIN_ADDRESS_HERE
+```
+
+**Ethereum (ETH)** *(optional)*
+```
+YOUR_ETHEREUM_ADDRESS_HERE
+```
+
+### 💖 GitHub Sponsors
+[Sponsor on GitHub](https://github.com/sponsors/dathims)
+
 ## License
 
 MIT License - see [LICENSE](docs/LICENSE)
 
 ---
 
-⭐ Star this repo • 💖 [Sponsor](https://github.com/sponsors/dathims) • 🐛 [Report Issues](https://github.com/dathims/nocss/issues)
+⭐ Star this repo • 💖 [Support](#support) • 🐛 [Report Issues](https://github.com/dathims/nocss/issues)

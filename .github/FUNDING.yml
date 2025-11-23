@@ -1,2 +1,9 @@
 # GitHub Sponsors configuration
 github: dathims
+
+# Alternative donation platforms
+ko_fi: YOUR_KOFI_USERNAME  # Replace with your Ko-fi username
+buy_me_a_coffee: YOUR_BMAC_USERNAME  # Replace with your Buy Me a Coffee username
+
+# Cryptocurrency donations
+custom: ['https://github.com/dathims/nocss#support']

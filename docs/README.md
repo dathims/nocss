@@ -19,7 +19,7 @@ A modern, classless CSS framework that brings intelligent styling to semantic HT
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nocss-framework/dist/nocss.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dathims/nocss/dist/nocss.min.css">
 </head>
 <body>
   <main>
@@ -45,12 +45,12 @@ A modern, classless CSS framework that brings intelligent styling to semantic HT
 
 ### CDN
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nocss-framework/dist/nocss.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dathims/nocss/dist/nocss.min.css">
 ```
 
 ### npm
 ```bash
-npm install nocss-framework
+npm install @dathims/nocss
 ```
 
 ### Manual

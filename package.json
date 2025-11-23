@@ -1,14 +1,26 @@
 {
-  "name": "nocss-framework",
+  "name": "@dathims/nocss",
   "version": "0.1.0",
   "description": "A classless CSS framework that styles semantic HTML intelligently using CSS selectors and contextual detection",
   "main": "dist/nocss.min.css",
+  "style": "dist/nocss.css",
+  "files": [
+    "dist/nocss.css",
+    "dist/nocss.min.css",
+    "dist/nocss.js",
+    "dist/component-loader.js",
+    "src/**/*.css",
+    "src/**/*.js",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
     "dev": "npm run build:css && npm run build:js",
     "build": "npm run build:css && npm run build:js",
     "build:css": "postcss src/nocss.css -o dist/nocss.css && postcss src/nocss.css -o dist/nocss.min.css --env production",
     "build:js": "cp src/nocss.js dist/nocss.js && cp src/component-loader.js dist/component-loader.js",
-    "serve": "serve . -p 8080 --single"
+    "serve": "serve . -p 8080 --single",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -30,7 +42,9 @@
     "accessible",
     "modern-css",
     "has-selector",
-    "contextual-styling"
+    "contextual-styling",
+    "zero-classes",
+    "semantic-css"
   ],
   "author": "dathims",
   "license": "MIT",
