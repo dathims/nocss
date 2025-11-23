@@ -1,0 +1,311 @@
+/* ==========================================================================
+   NoCSS Forms
+   Formulaires intelligents avec sélecteurs contextuels
+   ========================================================================== */
+
+/* Form container */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  max-width: 100%;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text);
+  margin-bottom: var(--space-2);
+}
+
+/* Inputs de base */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="url"],
+input[type="search"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+textarea,
+select {
+  width: 100%;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+/* Focus sur les inputs */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+input[type="datetime-local"]:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-primary-500);
+  box-shadow: 0 0 0 3px var(--color-primary-100);
+}
+
+/* Hover sur les inputs */
+input[type="text"]:hover,
+input[type="email"]:hover,
+input[type="password"]:hover,
+input[type="tel"]:hover,
+input[type="url"]:hover,
+input[type="search"]:hover,
+input[type="number"]:hover,
+input[type="date"]:hover,
+input[type="time"]:hover,
+input[type="datetime-local"]:hover,
+textarea:hover,
+select:hover {
+  border-color: var(--color-border-hover);
+}
+
+/* Disabled state */
+input:disabled,
+textarea:disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--color-gray-100);
+}
+
+/* Textarea spécifique */
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+/* Select */
+select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b7280' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right var(--space-3) center;
+  padding-right: var(--space-10);
+}
+
+/* Checkboxes et Radio */
+input[type="checkbox"],
+input[type="radio"] {
+  width: var(--space-5);
+  height: var(--space-5);
+  margin-right: var(--space-2);
+  cursor: pointer;
+  accent-color: var(--color-primary-500);
+}
+
+/* Label avec checkbox/radio (inline) */
+label:has(input[type="checkbox"]),
+label:has(input[type="radio"]) {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 0;
+}
+
+/* Buttons */
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-base);
+  font-weight: var(--font-medium);
+  line-height: 1;
+  color: var(--color-white);
+  background-color: var(--color-primary-600);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+              transform var(--transition-fast),
+              box-shadow var(--transition-fast);
+}
+
+button:hover,
+input[type="submit"]:hover,
+input[type="button"]:hover {
+  background-color: var(--color-primary-700);
+}
+
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active {
+  transform: scale(0.98);
+}
+
+button:disabled,
+input[type="submit"]:disabled,
+input[type="button"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Button avec icône (SVG, IMG) */
+button:has(svg),
+button:has(img) {
+  gap: var(--space-2);
+}
+
+button svg,
+button img {
+  width: var(--space-5);
+  height: var(--space-5);
+}
+
+/* Button reset (style secondaire) */
+input[type="reset"] {
+  background-color: var(--color-gray-200);
+  color: var(--color-text);
+}
+
+input[type="reset"]:hover {
+  background-color: var(--color-gray-300);
+}
+
+/* Contexte : Label suivi d'Input (pattern classique) */
+label + input[type="text"],
+label + input[type="email"],
+label + input[type="password"],
+label + input[type="tel"],
+label + input[type="url"],
+label + input[type="search"],
+label + input[type="number"],
+label + input[type="date"],
+label + input[type="time"],
+label + input[type="datetime-local"],
+label + textarea,
+label + select {
+  margin-top: 0;
+}
+
+/* Contexte : Input group (label + input dans un div) */
+div:has(> label + input),
+div:has(> label + textarea),
+div:has(> label + select) {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Contexte : Form avec plusieurs champs */
+form > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Contexte : Groupe de boutons côte à côte */
+form > div:has(button):has(button + button),
+div:has(button):has(button + button) {
+  flex-direction: row;
+  gap: var(--space-3);
+}
+
+/* Contexte : Input avec span (message d'aide) */
+input + span,
+textarea + span,
+select + span {
+  display: block;
+  margin-top: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-tertiary);
+}
+
+/* Validation : États d'erreur */
+input:invalid,
+textarea:invalid,
+select:invalid {
+  border-color: var(--color-error-500);
+}
+
+input:invalid:focus,
+textarea:invalid:focus,
+select:invalid:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+/* Message d'erreur après input invalide */
+input:invalid + span,
+textarea:invalid + span,
+select:invalid + span {
+  color: var(--color-error-600);
+}
+
+/* Search input spécifique */
+input[type="search"] {
+  padding-left: var(--space-10);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: var(--space-3) center;
+}
+
+/* Fieldset et legend */
+fieldset {
+  padding: var(--space-4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-4);
+}
+
+legend {
+  padding: 0 var(--space-2);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+}
+
+/* Responsive - Tablet et plus */
+@media (min-width: 768px) {
+  /* Formulaire avec layout horizontal sur tablet+ */
+  form.horizontal,
+  form:has(> div > label):has(> div > input) {
+    max-width: 600px;
+  }
+
+  /* Inputs plus grands sur desktop */
+  button,
+  input[type="submit"],
+  input[type="button"] {
+    padding: var(--space-3) var(--space-8);
+  }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  input:disabled,
+  textarea:disabled,
+  select:disabled {
+    background-color: var(--color-gray-800);
+  }
+
+  input[type="reset"] {
+    background-color: var(--color-gray-700);
+  }
+
+  input[type="reset"]:hover {
+    background-color: var(--color-gray-600);
+  }
+}

@@ -1,0 +1,308 @@
+/* ==========================================================================
+   NoCSS Navigation
+   Composants de navigation adaptatifs
+   ========================================================================== */
+
+/* Nav principal */
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--color-background);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Nav avec ul > li (menu horizontal) */
+nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0;
+}
+
+/* Liens de navigation */
+nav a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-base);
+  transition: color var(--transition-fast),
+              background-color var(--transition-fast);
+}
+
+nav a:hover {
+  color: var(--color-primary-600);
+  background-color: var(--color-primary-50);
+}
+
+/* Lien actif */
+nav a[aria-current="page"],
+nav a.active {
+  color: var(--color-primary-600);
+  font-weight: var(--font-semibold);
+}
+
+/* Nav avec logo (premier enfant) */
+nav > a:first-child,
+nav > div:first-child {
+  margin-right: auto;
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+}
+
+nav > a:first-child:hover {
+  background-color: transparent;
+}
+
+/* Nav avec icône dans les liens */
+nav a svg,
+nav a img {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+/* Menu vertical (nav sans ul) */
+nav:has(> a:not(:only-child)) {
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  border-right: 1px solid var(--color-border);
+  border-bottom: none;
+}
+
+nav:has(> a:not(:only-child)) > a {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Breadcrumb (nav avec ol) */
+nav:has(ol) {
+  padding: var(--space-3) 0;
+  background-color: transparent;
+  border-bottom: none;
+}
+
+nav ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+nav ol li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+}
+
+nav ol li::after {
+  content: "/";
+  color: var(--color-text-tertiary);
+}
+
+nav ol li:last-child::after {
+  content: none;
+}
+
+nav ol li:last-child {
+  color: var(--color-text);
+  font-weight: var(--font-medium);
+}
+
+nav ol a {
+  color: var(--color-primary-600);
+  text-decoration: none;
+  padding: 0;
+}
+
+nav ol a:hover {
+  text-decoration: underline;
+  background-color: transparent;
+}
+
+/* Dropdown menu (nav ul li ul) */
+nav ul li {
+  position: relative;
+}
+
+nav ul li ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  flex-direction: column;
+  min-width: 200px;
+  padding: var(--space-2);
+  margin-top: var(--space-2);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+}
+
+nav ul li:hover > ul,
+nav ul li:focus-within > ul {
+  display: flex;
+}
+
+nav ul li ul li {
+  width: 100%;
+}
+
+nav ul li ul a {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Menu mobile - Hamburger pattern */
+/* Quand nav contient un button suivi d'un ul */
+nav:has(button + ul) button {
+  display: none;
+  padding: var(--space-2);
+  background: none;
+  color: var(--color-text);
+  margin-left: auto;
+}
+
+nav:has(button + ul) button svg {
+  width: var(--space-6);
+  height: var(--space-6);
+}
+
+@media (max-width: 767px) {
+  nav:has(button + ul) {
+    flex-wrap: wrap;
+  }
+
+  nav:has(button + ul) button {
+    display: flex;
+  }
+
+  nav:has(button + ul) ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  /* Révélation du menu mobile via JS (classe .open) */
+  nav:has(button + ul).open ul,
+  nav:has(button + ul) button:focus + ul {
+    display: flex;
+  }
+}
+
+/* Sidebar navigation (aside nav) */
+aside nav {
+  flex-direction: column;
+  align-items: stretch;
+  border-right: 1px solid var(--color-border);
+  border-bottom: none;
+  min-height: 100vh;
+}
+
+aside nav ul {
+  flex-direction: column;
+  width: 100%;
+}
+
+aside nav a {
+  width: 100%;
+  justify-content: flex-start;
+}
+
+/* Tabs navigation */
+nav[role="tablist"] {
+  border-bottom: 2px solid var(--color-border);
+  gap: 0;
+  padding: 0;
+}
+
+nav[role="tablist"] a {
+  position: relative;
+  padding: var(--space-3) var(--space-4);
+  border-radius: 0;
+  background: none;
+}
+
+nav[role="tablist"] a:hover {
+  background-color: var(--color-gray-50);
+}
+
+nav[role="tablist"] a[aria-selected="true"],
+nav[role="tablist"] a.active {
+  color: var(--color-primary-600);
+}
+
+nav[role="tablist"] a[aria-selected="true"]::after,
+nav[role="tablist"] a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--color-primary-600);
+}
+
+/* Responsive - Tablet et plus */
+@media (min-width: 768px) {
+  nav {
+    padding: var(--space-4) var(--space-6);
+  }
+
+  nav a {
+    font-size: var(--text-base);
+  }
+
+  nav ul {
+    gap: var(--space-3);
+  }
+}
+
+/* Desktop et plus */
+@media (min-width: 1024px) {
+  nav {
+    padding: var(--space-4) var(--space-8);
+  }
+
+  nav ul {
+    gap: var(--space-4);
+  }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  nav a:hover {
+    background-color: var(--color-primary-900);
+  }
+
+  nav ul li ul {
+    background-color: var(--color-gray-800);
+    box-shadow: var(--shadow-xl);
+  }
+
+  nav[role="tablist"] a:hover {
+    background-color: var(--color-gray-800);
+  }
+}

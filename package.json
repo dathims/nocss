@@ -1,0 +1,29 @@
+{
+  "name": "nocss",
+  "version": "0.1.0",
+  "description": "A revolutionary CSS framework that styles your HTML based on structure, not classes",
+  "main": "dist/nocss.css",
+  "scripts": {
+    "dev": "postcss src/nocss.css -o dist/nocss.css --watch",
+    "build": "postcss src/nocss.css -o dist/nocss.css && postcss src/nocss.css -o dist/nocss.min.css --env production",
+    "serve": "python3 -m http.server 8080"
+  },
+  "keywords": [
+    "css",
+    "framework",
+    "no-classes",
+    "semantic-html",
+    "mobile-first",
+    "minimal"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "autoprefixer": "^10.4.16",
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.32",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.1",
+    "postcss-nesting": "^12.0.1"
+  }
+}

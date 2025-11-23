@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form - NoCSS Example</title>
+  <link rel="stylesheet" href="../dist/nocss.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="/">NoCSS</a>
+    <ul>
+      <li><a href="index.html">Showcase</a></li>
+      <li><a href="form-example.html" class="active">Form</a></li>
+      <li><a href="landing-page.html">Landing</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <main>
+    <article>
+      <header>
+        <h1>Contact Us</h1>
+        <p>Have a question? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+      </header>
+
+      <form>
+        <fieldset>
+          <legend>Personal Information</legend>
+
+          <div>
+            <label>First Name</label>
+            <input type="text" placeholder="John" required />
+          </div>
+
+          <div>
+            <label>Last Name</label>
+            <input type="text" placeholder="Doe" required />
+          </div>
+
+          <div>
+            <label>Email Address</label>
+            <input type="email" placeholder="john.doe@example.com" required />
+            <span>We'll never share your email with anyone else.</span>
+          </div>
+
+          <div>
+            <label>Phone Number</label>
+            <input type="tel" placeholder="+1 (555) 123-4567" />
+            <span>Optional - for urgent inquiries only.</span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Message Details</legend>
+
+          <div>
+            <label>Subject</label>
+            <select required>
+              <option value="">Select a subject...</option>
+              <option value="general">General Inquiry</option>
+              <option value="support">Technical Support</option>
+              <option value="feedback">Feedback</option>
+              <option value="bug">Bug Report</option>
+              <option value="feature">Feature Request</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Priority</label>
+            <div>
+              <label>
+                <input type="radio" name="priority" value="low" checked />
+                Low
+              </label>
+              <label>
+                <input type="radio" name="priority" value="medium" />
+                Medium
+              </label>
+              <label>
+                <input type="radio" name="priority" value="high" />
+                High
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label>Message</label>
+            <textarea placeholder="Tell us more about your inquiry..." rows="8" required></textarea>
+            <span>Please provide as much detail as possible.</span>
+          </div>
+
+          <div>
+            <label>Attachment</label>
+            <input type="file" />
+            <span>Max file size: 5MB. Accepted formats: PDF, PNG, JPG</span>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Preferences</legend>
+
+          <label>
+            <input type="checkbox" name="newsletter" />
+            Subscribe to our newsletter
+          </label>
+
+          <label>
+            <input type="checkbox" name="updates" />
+            Receive product updates and announcements
+          </label>
+
+          <label>
+            <input type="checkbox" name="terms" required />
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+        </fieldset>
+
+        <div>
+          <button type="submit">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
+              <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
+            </svg>
+            Send Message
+          </button>
+          <input type="reset" value="Clear Form" />
+        </div>
+      </form>
+    </article>
+
+    <aside>
+      <h3>Contact Information</h3>
+      <p>Prefer to reach us directly? Here are our contact details:</p>
+
+      <hr>
+
+      <h4>Email</h4>
+      <p><a href="mailto:support@nocss.com">support@nocss.com</a></p>
+
+      <h4>Phone</h4>
+      <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
+
+      <h4>Address</h4>
+      <p>
+        123 Web Street<br>
+        Internet City, IC 12345<br>
+        United States
+      </p>
+
+      <hr>
+
+      <h4>Business Hours</h4>
+      <ul>
+        <li>Monday - Friday: 9:00 AM - 6:00 PM</li>
+        <li>Saturday: 10:00 AM - 4:00 PM</li>
+        <li>Sunday: Closed</li>
+      </ul>
+
+      <hr>
+
+      <div role="alert">
+        <strong>Quick Response Time</strong>
+        <p>We typically respond to inquiries within 24 hours during business days.</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 NoCSS Framework. Built with semantic HTML.</p>
+  </footer>
+</body>
+</html>

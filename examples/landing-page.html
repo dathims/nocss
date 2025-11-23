@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoCSS - Style Without Classes</title>
+  <link rel="stylesheet" href="../dist/nocss.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="/">NoCSS</a>
+    <ul>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#examples">Examples</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+    </ul>
+    <button>
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+        <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <main>
+    <header>
+      <h1>Style Your HTML Without Classes</h1>
+      <span>A revolutionary CSS framework for semantic web development</span>
+      <p>NoCSS uses intelligent contextual selectors to automatically style your HTML based on structure. Write clean, semantic markup and let the framework handle the rest.</p>
+
+      <div>
+        <button>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"/>
+          </svg>
+          Get Started
+        </button>
+        <button>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+          </svg>
+          Documentation
+        </button>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features">
+      <h2>Why NoCSS?</h2>
+      <p>Build beautiful interfaces faster with intelligent, structure-based styling.</p>
+
+      <div>
+        <article>
+          <header>
+            <h3>Zero Classes</h3>
+          </header>
+          <p>No utility classes cluttering your HTML. Write semantic markup and let NoCSS handle the styling automatically.</p>
+        </article>
+
+        <article>
+          <header>
+            <h3>Intelligent Selectors</h3>
+          </header>
+          <p>Uses modern CSS selectors like :has(), combinators, and pseudo-classes to detect context and apply appropriate styles.</p>
+        </article>
+
+        <article>
+          <header>
+            <h3>Mobile First</h3>
+          </header>
+          <p>Responsive design baked in from the start. Your sites look great on any device without extra classes or configuration.</p>
+        </article>
+
+        <article>
+          <header>
+            <h3>Semantic HTML</h3>
+          </header>
+          <p>Encourages proper HTML structure and accessibility. Better for SEO, screen readers, and maintainability.</p>
+        </article>
+
+        <article>
+          <header>
+            <h3>Modern Design</h3>
+          </header>
+          <p>Beautiful, minimalist aesthetic inspired by modern design systems. Clean and professional out of the box.</p>
+        </article>
+
+        <article>
+          <header>
+            <h3>Dark Mode Ready</h3>
+          </header>
+          <p>Automatic dark mode support using prefers-color-scheme. No JavaScript or manual toggling required.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works">
+      <h2>How It Works</h2>
+      <p>NoCSS leverages cutting-edge CSS selectors to create context-aware stylesheets.</p>
+
+      <article>
+        <h3>Traditional CSS Framework</h3>
+        <pre><code>&lt;button class="btn btn-primary btn-lg
+       flex items-center gap-2
+       px-6 py-3 rounded-lg"&gt;
+  &lt;svg class="w-5 h-5"&gt;...&lt;/svg&gt;
+  Click me
+&lt;/button&gt;</code></pre>
+      </article>
+
+      <article>
+        <h3>NoCSS Approach</h3>
+        <pre><code>&lt;button&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+  Click me
+&lt;/button&gt;</code></pre>
+      </article>
+
+      <div role="alert" data-type="success">
+        <strong>90% Less Markup</strong>
+        <p>NoCSS detects that the button contains an SVG and automatically applies the correct spacing and alignment. No classes needed!</p>
+      </div>
+    </section>
+
+    <!-- Code Examples Section -->
+    <section id="examples">
+      <h2>See It In Action</h2>
+
+      <details>
+        <summary>Form Example</summary>
+        <pre><code>&lt;form&gt;
+  &lt;label&gt;Email&lt;/label&gt;
+  &lt;input type="email" /&gt;
+
+  &lt;label&gt;Password&lt;/label&gt;
+  &lt;input type="password" /&gt;
+
+  &lt;button&gt;Sign In&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <p>NoCSS automatically styles the form based on the label + input pattern.</p>
+      </details>
+
+      <details>
+        <summary>Card Grid Example</summary>
+        <pre><code>&lt;div&gt;
+  &lt;article&gt;
+    &lt;h3&gt;Card 1&lt;/h3&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+  &lt;/article&gt;
+
+  &lt;article&gt;
+    &lt;h3&gt;Card 2&lt;/h3&gt;
+    &lt;p&gt;Content...&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+        <p>Multiple articles in a div automatically create a responsive grid.</p>
+      </details>
+
+      <details>
+        <summary>Navigation Example</summary>
+        <pre><code>&lt;nav&gt;
+  &lt;a href="/"&gt;Logo&lt;/a&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="/home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="/about"&gt;About&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+        <p>Navigation is automatically styled with proper spacing and hover states.</p>
+      </details>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+      <h2>Pricing</h2>
+      <p>NoCSS is completely free and open source.</p>
+
+      <div>
+        <article>
+          <header>
+            <h3>Open Source</h3>
+            <h1>Free</h1>
+          </header>
+          <ul>
+            <li>Complete framework access</li>
+            <li>All components included</li>
+            <li>Regular updates</li>
+            <li>Community support</li>
+            <li>MIT License</li>
+          </ul>
+          <footer>
+            <button>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+              </svg>
+              Download
+            </button>
+          </footer>
+        </article>
+
+        <article>
+          <header>
+            <h3>Pro Support</h3>
+            <h1>$99<span>/month</span></h1>
+          </header>
+          <ul>
+            <li>Everything in Open Source</li>
+            <li>Priority bug fixes</li>
+            <li>Direct email support</li>
+            <li>Custom theme creation</li>
+            <li>Training workshops</li>
+          </ul>
+          <footer>
+            <button>Contact Sales</button>
+          </footer>
+        </article>
+
+        <article>
+          <header>
+            <h3>Enterprise</h3>
+            <h1>Custom</h1>
+          </header>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>Dedicated support team</li>
+            <li>Custom feature development</li>
+            <li>SLA guarantees</li>
+            <li>On-site training</li>
+          </ul>
+          <footer>
+            <button>Get Quote</button>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section>
+      <h2>Ready to Get Started?</h2>
+      <p>Join thousands of developers building better websites with NoCSS.</p>
+
+      <div>
+        <button>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+          Download NoCSS
+        </button>
+        <button>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+          </svg>
+          View Examples
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <h4>NoCSS</h4>
+      <p>Style without classes. Build with semantic HTML.</p>
+    </div>
+
+    <div>
+      <h5>Product</h5>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#">Documentation</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h5>Resources</h5>
+      <ul>
+        <li><a href="#">GitHub</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Community</a></li>
+        <li><a href="#">Support</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h5>Company</h5>
+      <ul>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy</a></li>
+      </ul>
+    </div>
+
+    <hr>
+
+    <p>&copy; 2025 NoCSS Framework. MIT License. No classes, no bloat, just semantic HTML.</p>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,78 @@
+/*!
+ * NoCSS v0.1.0
+ * A revolutionary CSS framework that styles HTML based on structure, not classes
+ *
+ * Copyright (c) 2025
+ * Licensed under MIT
+ *
+ * Mobile-first | Semantic HTML | Zero classes | Intelligent selectors
+ */
+
+/* ==========================================================================
+   Core - Fondations
+   ========================================================================== */
+
+@import "./core/_variables.css";
+@import "./core/_reset.css";
+@import "./core/_typography.css";
+
+/* ==========================================================================
+   Components - Composants principaux
+   ========================================================================== */
+
+@import "./components/_forms.css";
+@import "./components/_navigation.css";
+@import "./components/_containers.css";
+
+/* ==========================================================================
+   Utils - Utilitaires
+   ========================================================================== */
+
+@import "./utils/_utilities.css";
+
+/* ==========================================================================
+   Global Utilities
+   ========================================================================== */
+
+/* Hidden */
+[hidden] {
+  display: none !important;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to content */
+a[href="#main"]:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+a[href="#main"]:focus {
+  position: fixed;
+  top: var(--space-4);
+  left: var(--space-4);
+  z-index: var(--z-modal);
+  padding: var(--space-3) var(--space-6);
+  background-color: var(--color-primary-600);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: var(--radius-md);
+}
