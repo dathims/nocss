@@ -59,11 +59,11 @@ See [CONTRIBUTING.md](docs/CONTRIBUTING.md)
 
 If you find NoCSS useful, consider supporting its development:
 
+### 🎉 Ko-fi
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X8X11P0PR3)
+
 ### ☕ Buy Me a Coffee
 [![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/YOUR_BMAC_USERNAME)
-
-### 🎉 Ko-fi
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?logo=ko-fi)](https://ko-fi.com/YOUR_KOFI_USERNAME)
 
 ### ₿ Cryptocurrency
 

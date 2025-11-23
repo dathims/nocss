@@ -2,8 +2,7 @@
 github: dathims
 
 # Alternative donation platforms
-ko_fi: YOUR_KOFI_USERNAME  # Replace with your Ko-fi username
 buy_me_a_coffee: YOUR_BMAC_USERNAME  # Replace with your Buy Me a Coffee username
 
-# Cryptocurrency donations
-custom: ['https://github.com/dathims/nocss#support']
+# Cryptocurrency donations and Ko-fi
+custom: ['https://ko-fi.com/X8X11P0PR3', 'https://github.com/dathims/nocss#support']
