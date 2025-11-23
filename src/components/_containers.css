@@ -12,14 +12,8 @@ main {
 
 @media (min-width: 768px) {
   main {
-    padding: var(--space-6);
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1024px) {
-  main {
     padding: var(--space-8);
+    max-width: 1280px;
   }
 }
 
@@ -411,12 +405,6 @@ section:has(> article + article) {
 
 @media (min-width: 768px) {
   div:has(> article + article) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  div:has(> article + article) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -436,7 +424,7 @@ div:has(> aside + main) {
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   /* Aside après main (sidebar droite) */
   div:has(> main + aside) {
     grid-template-columns: 1fr 320px;
@@ -449,7 +437,7 @@ div:has(> aside + main) {
 }
 
 /* Mobile : hide aside by default, show main as priority */
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   div:has(> aside > nav) aside {
     display: none;
   }

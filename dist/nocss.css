@@ -454,63 +454,23 @@ h6 {
   color: var(--color-text-secondary);
 }
 
-/* Responsive headings - Small tablets */
-
-@media (min-width: 600px) {
-  h1 {
-    font-size: var(--text-2xl);
-  }
-}
-
-/* Tablet et plus */
+/* Desktop - Single breakpoint at 768px */
 
 @media (min-width: 768px) {
-  h1 {
-    font-size: var(--text-3xl);
-  }
-
-  h2 {
-    font-size: var(--text-2xl);
-  }
-
-  h3 {
-    font-size: var(--text-xl);
-  }
-
-  h4 {
-    font-size: var(--text-lg);
-  }
-}
-
-/* Medium screens */
-
-@media (min-width: 900px) {
-  h1 {
-    font-size: var(--text-4xl);
-  }
-
-  h2 {
-    font-size: var(--text-3xl);
-  }
-
-  h3 {
-    font-size: var(--text-2xl);
-  }
-
-  h4 {
-    font-size: var(--text-xl);
-  }
-}
-
-/* Desktop et plus */
-
-@media (min-width: 1024px) {
   h1 {
     font-size: var(--text-5xl);
   }
 
   h2 {
     font-size: var(--text-4xl);
+  }
+
+  h3 {
+    font-size: var(--text-2xl);
+  }
+
+  h4 {
+    font-size: var(--text-xl);
   }
 }
 
@@ -1476,27 +1436,15 @@ nav[role="tablist"] a.active::after {
   background-color: var(--color-primary-600);
 }
 
-/* Responsive - Tablet et plus */
+/* Desktop - Single breakpoint at 768px */
 
 @media (min-width: 768px) {
   nav {
-    padding: var(--space-4) var(--space-6);
+    padding: var(--space-4) var(--space-8);
   }
 
   nav a {
     font-size: var(--text-base);
-  }
-
-  nav ul {
-    gap: var(--space-3);
-  }
-}
-
-/* Desktop et plus */
-
-@media (min-width: 1024px) {
-  nav {
-    padding: var(--space-4) var(--space-8);
   }
 
   nav ul {
@@ -1650,14 +1598,8 @@ main {
 
 @media (min-width: 768px) {
   main {
-    padding: var(--space-6);
-    max-width: 1280px;
-  }
-}
-
-@media (min-width: 1024px) {
-  main {
     padding: var(--space-8);
+    max-width: 1280px;
   }
 }
 
@@ -2080,12 +2022,6 @@ section:has(> article + article) {
 
 @media (min-width: 768px) {
   div:has(> article + article) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 1024px) {
-  div:has(> article + article) {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -2107,7 +2043,7 @@ div:has(> aside + main) {
   grid-template-columns: 1fr;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   /* Aside après main (sidebar droite) */
   div:has(> main + aside) {
     grid-template-columns: 1fr 320px;
@@ -2121,7 +2057,7 @@ div:has(> aside + main) {
 
 /* Mobile : hide aside by default, show main as priority */
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
   div:has(> aside > nav) aside {
     display: none;
   }
