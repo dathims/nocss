@@ -63,22 +63,7 @@ If you find NoCSS useful, consider supporting its development:
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/X8X11P0PR3)
 
 ### ☕ Buy Me a Coffee
-[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/YOUR_BMAC_USERNAME)
-
-### ₿ Cryptocurrency
-
-**Bitcoin (BTC)**
-```
-YOUR_BITCOIN_ADDRESS_HERE
-```
-
-**Ethereum (ETH)** *(optional)*
-```
-YOUR_ETHEREUM_ADDRESS_HERE
-```
-
-### 💖 GitHub Sponsors
-[Sponsor on GitHub](https://github.com/sponsors/dathims)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-Support-yellow?logo=buy-me-a-coffee)](https://buymeacoffee.com/dathims)
 
 ## License
 
