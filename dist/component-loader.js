@@ -10,26 +10,10 @@
 
   const ComponentLoader = {
     /**
-     * Détermine le chemin de base selon la profondeur du répertoire
-     */
-    getBasePath() {
-      const path = window.location.pathname;
-
-      // Si dans examples/, remonter d'un niveau
-      if (path.includes('/examples/')) {
-        return '../';
-      }
-
-      // Sinon, chemin racine
-      return './';
-    },
-
-    /**
      * Charge un composant HTML via fetch
      */
     async loadComponent(componentName, placeholder) {
-      const basePath = this.getBasePath();
-      const componentPath = `${basePath}src/components/${componentName}.html`;
+      const componentPath = `/src/components/${componentName}.html`;
 
       try {
         const response = await fetch(componentPath);

@@ -1,12 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script>
+  (function() {
+    const base = document.createElement('base');
+    const path = window.location.pathname;
+
+    // Detect GitHub Pages subdirectory or custom domain
+    if (path.startsWith('/nocss/') || path === '/nocss') {
+      base.href = '/nocss/';
+    } else {
+      base.href = '/';
+    }
+
+    document.head.insertBefore(base, document.head.firstChild);
+  })();
+  </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Form - NoCSS Example</title>
-  <link rel="stylesheet" href="../dist/nocss.css">
-  <script src="../dist/component-loader.js"></script>
-  <script src="../dist/nocss.js" defer></script>
+  <link rel="stylesheet" href="/dist/nocss.css">
+  <script src="/dist/component-loader.js"></script>
+  <script src="/dist/nocss.js" defer></script>
 </head>
 <body>
   <!-- Navigation -->
