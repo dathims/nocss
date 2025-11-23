@@ -1,6 +1,6 @@
 /* ==========================================================================
    NoCSS Containers & Cards
-   Conteneurs intelligents et adaptatifs
+   Smart and adaptive containers
    ========================================================================== */
 
 /* Main container */
@@ -20,6 +20,80 @@ main {
 @media (min-width: 1024px) {
   main {
     padding: var(--space-8);
+  }
+}
+
+/* ==========================================================================
+   Global Page Layout - Header + Sidebar + Main + Footer
+   ========================================================================== */
+
+/* Body layout for pages with sidebar */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Global sticky header at top */
+body > header:first-child {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-background);
+  padding: 0; /* Reset padding par défaut des headers de contenu */
+}
+
+/* Wrapper for sidebar + main content */
+body > div:has(> aside + main) {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  body > div:has(> aside + main) {
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+/* Sidebar */
+body > div > aside {
+  background-color: var(--color-background);
+  border-right: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 0;
+  align-self: stretch; /* Prend toute la hauteur de la grille */
+}
+
+@media (min-width: 768px) {
+  body > div > aside {
+    position: sticky;
+    top: 73px;
+  }
+}
+
+/* Main content */
+body > div > main {
+  background-color: var(--color-background);
+  max-width: none; /* Permet au main de s'étendre dans la grille */
+  width: 100%; /* Prend toute la largeur disponible */
+}
+
+/* Footer at bottom of page */
+body > footer {
+  margin-top: auto;
+}
+
+/* Mobile: sidebar hidden, stacked display */
+@media (max-width: 767px) {
+  body > div:has(> aside + main) {
+    grid-template-columns: 1fr;
+  }
+
+  body > div > aside {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--color-border);
   }
 }
 
@@ -44,7 +118,7 @@ footer {
   color: var(--color-text-secondary);
 }
 
-/* Footer avec plusieurs divs (sections) - layout horizontal sur desktop */
+/* Footer with multiple divs (sections) - horizontal layout on desktop */
 footer:has(> div + div) {
   display: flex;
   flex-direction: column;
@@ -99,15 +173,16 @@ article {
   padding: var(--space-6);
   background-color: var(--color-background);
   border: 1px solid var(--color-border);
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
   transition: box-shadow var(--transition-base),
               transform var(--transition-base);
+  overflow: hidden;
 }
 
 article:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
 }
 
 /* Article avec header */
@@ -115,36 +190,207 @@ article > header {
   padding: 0;
   margin-bottom: var(--space-4);
   background: none;
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--space-4);
 }
 
 article > header:last-child {
   margin-bottom: 0;
-  border-bottom: none;
-  padding-bottom: 0;
+}
+
+/* Article header - hiérarchie typographique */
+article > header h3,
+article > header h4 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-semibold);
+  margin: 0 0 var(--space-1) 0;
+  color: var(--color-text);
+  line-height: var(--leading-tight);
+}
+
+article > header p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
 }
 
 /* Article avec footer */
 article > footer {
   margin-top: var(--space-4);
-  padding-top: var(--space-4);
-  border-top: 1px solid var(--color-border);
   background: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  font-size: var(--text-sm);
 }
 
 article > footer:only-child {
   margin-top: 0;
-  padding-top: 0;
-  border-top: none;
 }
 
-/* Article avec image */
+/* Article avec image cover */
 article > img:first-child,
 article > picture:first-child {
-  margin: calc(var(--space-6) * -1) calc(var(--space-6) * -1) var(--space-4);
-  width: calc(100% + var(--space-12));
-  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  width: 100%;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  max-height: 280px;
+  margin-bottom: var(--space-4);
+}
+
+/* Article avec image petite (thumbnail) */
+article > img:last-child,
+article > picture:last-child {
+  margin-top: var(--space-4);
+  border-radius: var(--radius-md);
+  width: 100%;
+  object-fit: cover;
+}
+
+/* List items with avatars */
+ul > li {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  list-style: none;
+}
+
+/* Avatar images in list items */
+ul > li > img {
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+/* Content wrapper in list items with avatars */
+ul > li > div {
+  flex: 1;
+  min-width: 0;
+}
+
+ul > li > div h4 {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text);
+  margin: 0 0 var(--space-1) 0;
+  line-height: var(--leading-tight);
+}
+
+ul > li > div p {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Badge in list items with avatars */
+ul > li > [data-badge] {
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+/* Remove default ul padding for avatar lists */
+article > ul {
+  padding: 0;
+  margin: 0;
+}
+
+/* Stat cards */
+article[data-type="stat"] {
+  padding: var(--space-5);
+  background: linear-gradient(135deg, var(--color-primary-50) 0%, var(--color-background) 100%);
+}
+
+article[data-type="stat"] header {
+  padding: 0;
+  margin: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+article[data-type="stat"] header h3,
+article[data-type="stat"] header h4 {
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+article[data-type="stat"] header p {
+  font-size: var(--text-3xl);
+  font-weight: var(--font-bold);
+  color: var(--color-text);
+  margin: 0;
+  line-height: 1;
+}
+
+article[data-type="stat"] footer {
+  margin: var(--space-3) 0 0;
+  padding: 0;
+  border: none;
+  font-size: var(--text-xs);
+  color: var(--color-text-tertiary);
+}
+
+/* Variantes de stat cards */
+article[data-type="stat"][data-color="success"] {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, var(--color-background) 100%);
+}
+
+article[data-type="stat"][data-color="warning"] {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, var(--color-background) 100%);
+}
+
+article[data-type="stat"][data-color="error"] {
+  background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, var(--color-background) 100%);
+}
+
+/* Liste d'items dans une card (article parent avec articles enfants) */
+article:has(> article + article) {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 0;
+}
+
+article:has(> article + article) > header {
+  padding: var(--space-6);
+  margin: 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+article:has(> article + article) > header h2,
+article:has(> article + article) > header h3 {
+  font-size: var(--text-2xl);
+  font-weight: var(--font-bold);
+  margin: 0;
+  color: var(--color-text);
+}
+
+article:has(> article + article) > article {
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  border-bottom: 1px solid var(--color-border);
+  transition: background-color var(--transition-fast);
+}
+
+article:has(> article + article) > article:last-child {
+  border-bottom: none;
+}
+
+article:has(> article + article) > article:hover {
+  background-color: var(--color-background-secondary);
+  transform: none;
+  box-shadow: none;
 }
 
 /* Grid de cards (div avec plusieurs articles) */
@@ -152,6 +398,13 @@ div:has(> article + article) {
   display: grid;
   gap: var(--space-6);
   grid-template-columns: 1fr;
+}
+
+/* Sections avec plusieurs articles - espacement vertical */
+section:has(> article + article) {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
 }
 
 @media (min-width: 768px) {
@@ -173,24 +426,43 @@ aside {
   border-radius: var(--radius-lg);
 }
 
-/* Layout avec aside (main + aside) */
-body:has(main + aside),
-div:has(> main + aside) {
+/* Layout avec aside (main + aside ou aside + main) - LEGACY pour divs sans structure body > div */
+div:has(> main + aside),
+div:has(> aside + main) {
   display: grid;
-  gap: var(--space-6);
+  gap: 0;
   grid-template-columns: 1fr;
 }
 
 @media (min-width: 1024px) {
-  body:has(main + aside),
+  /* Aside après main (sidebar droite) */
   div:has(> main + aside) {
     grid-template-columns: 1fr 320px;
   }
 
-  /* Aside avant main */
-  body:has(aside + main),
+  /* Aside avant main (sidebar gauche) */
   div:has(> aside + main) {
-    grid-template-columns: 320px 1fr;
+    grid-template-columns: 280px 1fr;
+  }
+}
+
+/* Mobile : hide aside by default, show main as priority */
+@media (max-width: 1023px) {
+  div:has(> aside > nav) aside {
+    display: none;
+  }
+
+  /* Toggle to show sidebar sur mobile (via JS) */
+  div:has(> aside > nav).sidebar-open aside {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 280px;
+    background-color: var(--color-background);
+    z-index: var(--z-modal);
+    box-shadow: var(--shadow-xl);
   }
 }
 

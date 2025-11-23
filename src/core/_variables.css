@@ -1,6 +1,6 @@
 /* ==========================================================================
    NoCSS Variables
-   Système de design moderne et minimaliste
+   Design system moderne et minimaliste
    ========================================================================== */
 
 :root {
@@ -32,7 +32,7 @@
   --font-semibold: 600;
   --font-bold: 700;
 
-  /* Spacing - Échelle harmonieuse (4px base) */
+  /* Spacing - Harmonic scale (4px base) */
   --space-1: 0.25rem;      /* 4px */
   --space-2: 0.5rem;       /* 8px */
   --space-3: 0.75rem;      /* 12px */
@@ -46,7 +46,7 @@
   --space-20: 5rem;        /* 80px */
   --space-24: 6rem;        /* 96px */
 
-  /* Colors - Palette moderne minimaliste */
+  /* Colors - Modern palette minimaliste */
 
   /* Neutrals */
   --color-white: #ffffff;
@@ -106,12 +106,14 @@
   --radius-xl: 1rem;       /* 16px */
   --radius-full: 9999px;
 
-  /* Shadows - Flat design subtil */
+  /* Shadows - Modern soft shadows */
   --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-sm: 0 2px 8px 0 rgb(0 0 0 / 0.08);
+  --shadow-md: 0 4px 12px 0 rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 8px 24px 0 rgb(0 0 0 / 0.12);
+  --shadow-xl: 0 12px 32px 0 rgb(0 0 0 / 0.15);
+  --shadow-card: 0 2px 8px 0 rgb(0 0 0 / 0.08), 0 0 1px 0 rgb(0 0 0 / 0.04);
+  --shadow-card-hover: 0 8px 24px 0 rgb(0 0 0 / 0.12), 0 0 1px 0 rgb(0 0 0 / 0.04);
 
   /* Transitions */
   --transition-fast: 150ms ease-in-out;
@@ -128,8 +130,8 @@
   --z-popover: 1500;
   --z-tooltip: 1600;
 
-  /* Breakpoints (pour référence dans media queries) */
-  /* Mobile: < 640px (défaut) */
+  /* Breakpoints (for reference dans media queries) */
+  /* Mobile: < 640px (default) */
   /* Tablet: >= 768px */
   /* Desktop: >= 1024px */
   /* Wide: >= 1280px */

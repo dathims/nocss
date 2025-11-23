@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components Library - NoCSS</title>
+  <link rel="stylesheet" href="../dist/nocss.css">
+  <script src="../dist/component-loader.js"></script>
+  <script src="../dist/nocss.js" defer></script>
+  <style>
+    /* Styles spécifiques pour le code viewer */
+    [data-code-viewer] {
+      margin: var(--space-6) 0;
+    }
+    [data-code-viewer] label[data-toggle-view] {
+      margin-bottom: var(--space-4);
+      display: inline-flex;
+    }
+    [data-code-viewer] pre {
+      margin: 0;
+      max-height: 400px;
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation Component -->
+  <header data-component="header"></header>
+
+  <div>
+    <!-- Sidebar Navigation -->
+    <aside>
+      <nav>
+        <h3>Components</h3>
+        <a href="#buttons">Buttons</a>
+        <a href="#forms">Forms</a>
+        <a href="#tables">Tables</a>
+        <a href="#tabs">Tabs</a>
+        <a href="#navigation">Navigation</a>
+        <a href="#modals">Modals</a>
+        <a href="#cards">Cards</a>
+        <a href="#typography">Typography</a>
+        <a href="#code">Code</a>
+        <a href="#containers">Containers</a>
+        <a href="#alerts">Alerts</a>
+        <a href="#switch">Switch Button</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <header>
+        <h1>Components Library</h1>
+        <p>All NoCSS components with live code examples. No classes, just semantic HTML.</p>
+      </header>
+
+      <!-- Buttons Section -->
+      <section id="buttons">
+        <h2>Buttons</h2>
+        <p>Buttons get different styles based on their position in the DOM.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <div>
+              <button>Primary Action</button>
+              <button>Secondary Action</button>
+              <button>Tertiary Action</button>
+            </div>
+          </div>
+
+          <pre data-code><code>&lt;div&gt;
+  &lt;button&gt;Primary Action&lt;/button&gt;
+  &lt;button&gt;Secondary Action&lt;/button&gt;
+  &lt;button&gt;Tertiary Action&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <h3>Buttons with Icons</h3>
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <div>
+              <button>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+                </svg>
+                Add Item
+              </button>
+              <button>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+                </svg>
+                Edit
+              </button>
+            </div>
+          </div>
+
+          <pre data-code><code>&lt;div&gt;
+  &lt;button&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+    Add Item
+  &lt;/button&gt;
+  &lt;button&gt;
+    &lt;svg&gt;...&lt;/svg&gt;
+    Edit
+  &lt;/button&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Forms Section -->
+      <section id="forms">
+        <h2>Forms</h2>
+        <p>Semantic forms with automatic styling. No classes needed.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <form>
+              <label>
+                Name
+                <input type="text" placeholder="Enter your name" required>
+              </label>
+
+              <label>
+                Email
+                <input type="email" placeholder="your@email.com" required>
+              </label>
+
+              <label>
+                Message
+                <textarea rows="4" placeholder="Your message here..."></textarea>
+              </label>
+
+              <label>
+                <input type="checkbox" required>
+                I agree to the terms
+              </label>
+
+              <div>
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+              </div>
+            </form>
+          </div>
+
+          <pre data-code><code>&lt;form&gt;
+  &lt;label&gt;
+    Name
+    &lt;input type="text" placeholder="Enter your name" required&gt;
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    Email
+    &lt;input type="email" placeholder="your@email.com" required&gt;
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    Message
+    &lt;textarea rows="4" placeholder="Your message here..."&gt;&lt;/textarea&gt;
+  &lt;/label&gt;
+
+  &lt;label&gt;
+    &lt;input type="checkbox" required&gt;
+    I agree to the terms
+  &lt;/label&gt;
+
+  &lt;div&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+    &lt;button type="reset"&gt;Reset&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Tables Section -->
+      <section id="tables">
+        <h2>Tables</h2>
+        <p>Responsive tables with zebra striping and hover effects.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Role</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>John Doe</td>
+                  <td>Developer</td>
+                  <td>Active</td>
+                  <td>
+                    <button>Edit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Jane Smith</td>
+                  <td>Designer</td>
+                  <td>Active</td>
+                  <td>
+                    <button>Edit</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>Bob Johnson</td>
+                  <td>Manager</td>
+                  <td>Away</td>
+                  <td>
+                    <button>Edit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <pre data-code><code>&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Role&lt;/th&gt;
+      &lt;th&gt;Status&lt;/th&gt;
+      &lt;th&gt;Actions&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;John Doe&lt;/td&gt;
+      &lt;td&gt;Developer&lt;/td&gt;
+      &lt;td&gt;Active&lt;/td&gt;
+      &lt;td&gt;&lt;button&gt;Edit&lt;/button&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Tabs Section -->
+      <section id="tabs">
+        <h2>Tabs</h2>
+        <p>Chrome-style tabs with automatic styling and JavaScript behavior.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <div data-tabs>
+              <nav>
+                <a href="#tab1" aria-selected="true">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                    <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
+                  </svg>
+                  Home
+                </a>
+                <a href="#tab2">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"/>
+                  </svg>
+                  Profile
+                </a>
+                <a href="#tab3">
+                  <svg width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                  </svg>
+                  Settings
+                </a>
+              </nav>
+              <div>
+                <div data-tab="tab1">
+                  <h3>Home Content</h3>
+                  <p>This is the home tab content.</p>
+                </div>
+                <div data-tab="tab2" style="display: none;">
+                  <h3>Profile Content</h3>
+                  <p>Profile information goes here.</p>
+                </div>
+                <div data-tab="tab3" style="display: none;">
+                  <h3>Settings Content</h3>
+                  <p>Application settings.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <pre data-code><code>&lt;div data-tabs&gt;
+  &lt;nav&gt;
+    &lt;a href="#tab1" aria-selected="true"&gt;Home&lt;/a&gt;
+    &lt;a href="#tab2"&gt;Profile&lt;/a&gt;
+    &lt;a href="#tab3"&gt;Settings&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;div&gt;
+    &lt;div data-tab="tab1"&gt;Home Content&lt;/div&gt;
+    &lt;div data-tab="tab2" style="display: none;"&gt;Profile Content&lt;/div&gt;
+    &lt;div data-tab="tab3" style="display: none;"&gt;Settings Content&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Navigation Section -->
+      <section id="navigation">
+        <h2>Navigation</h2>
+        <p>Responsive navigation with dropdown menus.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <nav>
+              <a href="#">Logo</a>
+              <ul>
+                <li><a href="#">Home</a></li>
+                <li>
+                  <a href="#">Products</a>
+                  <ul>
+                    <li><a href="#">Product 1</a></li>
+                    <li><a href="#">Product 2</a></li>
+                    <li><a href="#">Product 3</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+              </ul>
+              <button>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+                </svg>
+              </button>
+            </nav>
+          </div>
+
+          <pre data-code><code>&lt;nav&gt;
+  &lt;a href="#"&gt;Logo&lt;/a&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;
+      &lt;a href="#"&gt;Products&lt;/a&gt;
+      &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Product 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;Product 2&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;button&gt;☰&lt;/button&gt;
+&lt;/nav&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Modals Section -->
+      <section id="modals">
+        <h2>Modals</h2>
+        <p>Accessible modal dialogs with backdrop.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <button data-modal-trigger="example-modal">Open Modal</button>
+
+            <dialog id="example-modal">
+              <header>
+                <h3>Example Modal</h3>
+                <button data-modal-close aria-label="Close">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                  </svg>
+                </button>
+              </header>
+              <article>
+                <p>This is a modal dialog.</p>
+                <p>Click outside or press Escape to close.</p>
+              </article>
+              <footer>
+                <button data-modal-close>Cancel</button>
+                <button>Confirm</button>
+              </footer>
+            </dialog>
+          </div>
+
+          <pre data-code><code>&lt;button data-modal-trigger="example-modal"&gt;Open Modal&lt;/button&gt;
+
+&lt;dialog id="example-modal"&gt;
+  &lt;header&gt;
+    &lt;h3&gt;Example Modal&lt;/h3&gt;
+    &lt;button data-modal-close&gt;×&lt;/button&gt;
+  &lt;/header&gt;
+  &lt;article&gt;
+    &lt;p&gt;Modal content&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;footer&gt;
+    &lt;button data-modal-close&gt;Cancel&lt;/button&gt;
+    &lt;button&gt;Confirm&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/dialog&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Cards Section -->
+      <section id="cards">
+        <h2>Cards</h2>
+        <p>Article elements automatically become cards.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <div>
+              <article>
+                <header>
+                  <h3>Card Title</h3>
+                  <p>Subtitle or metadata</p>
+                </header>
+                <p>Card content goes here. Articles are automatically styled as cards with padding, borders, and shadows.</p>
+                <footer>
+                  <button>Action</button>
+                  <button>Cancel</button>
+                </footer>
+              </article>
+
+              <article>
+                <header>
+                  <h3>Another Card</h3>
+                </header>
+                <p>Multiple articles side by side create a card grid.</p>
+              </article>
+            </div>
+          </div>
+
+          <pre data-code><code>&lt;div&gt;
+  &lt;article&gt;
+    &lt;header&gt;
+      &lt;h3&gt;Card Title&lt;/h3&gt;
+      &lt;p&gt;Subtitle&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;p&gt;Card content&lt;/p&gt;
+    &lt;footer&gt;
+      &lt;button&gt;Action&lt;/button&gt;
+    &lt;/footer&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Typography Section -->
+      <section id="typography">
+        <h2>Typography</h2>
+        <p>Beautiful typography with semantic HTML.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <article>
+              <h1>Heading 1</h1>
+              <h2>Heading 2</h2>
+              <h3>Heading 3</h3>
+              <h4>Heading 4</h4>
+              <h5>Heading 5</h5>
+              <h6>Heading 6</h6>
+
+              <p>This is a paragraph with <strong>bold text</strong>, <em>italic text</em>, and <a href="#">a link</a>.</p>
+
+              <blockquote>
+                This is a blockquote. It's automatically styled with a left border and italic text.
+              </blockquote>
+
+              <ul>
+                <li>Unordered list item 1</li>
+                <li>Unordered list item 2</li>
+                <li>Unordered list item 3</li>
+              </ul>
+
+              <ol>
+                <li>Ordered list item 1</li>
+                <li>Ordered list item 2</li>
+                <li>Ordered list item 3</li>
+              </ol>
+            </article>
+          </div>
+
+          <pre data-code><code>&lt;h1&gt;Heading 1&lt;/h1&gt;
+&lt;p&gt;Paragraph with &lt;strong&gt;bold&lt;/strong&gt; and &lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;
+&lt;blockquote&gt;Quote&lt;/blockquote&gt;
+&lt;ul&gt;
+  &lt;li&gt;List item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Code Section -->
+      <section id="code">
+        <h2>Code & Syntax Highlighting</h2>
+        <p>Automatic syntax highlighting with data-lang attribute.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <pre data-lang="javascript"><code>// JavaScript example
+const greeting = 'Hello, NoCSS!';
+
+function sayHello(name) {
+  return `${greeting} Welcome, ${name}!`;
+}
+
+console.log(sayHello('Developer'));</code></pre>
+          </div>
+
+          <pre data-code><code>&lt;pre data-lang="javascript"&gt;&lt;code&gt;
+const greeting = 'Hello, NoCSS!';
+
+function sayHello(name) {
+  return \`\${greeting} Welcome, \${name}!\`;
+}
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+        </article>
+
+        <h3>CSS Syntax</h3>
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <pre data-lang="css"><code>/* CSS example */
+nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  background-color: var(--color-background);
+}
+
+nav a:hover {
+  color: var(--color-primary-600);
+}</code></pre>
+          </div>
+
+          <pre data-code><code>&lt;pre data-lang="css"&gt;&lt;code&gt;
+nav {
+  display: flex;
+  align-items: center;
+}
+&lt;/code&gt;&lt;/pre&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Containers Section -->
+      <section id="containers">
+        <h2>Containers</h2>
+        <p>Responsive containers and grid layouts.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <div>
+              <div>
+                <p>Column 1</p>
+              </div>
+              <div>
+                <p>Column 2</p>
+              </div>
+              <div>
+                <p>Column 3</p>
+              </div>
+            </div>
+          </div>
+
+          <pre data-code><code>&lt;div&gt;
+  &lt;div&gt;&lt;p&gt;Column 1&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;p&gt;Column 2&lt;/p&gt;&lt;/div&gt;
+  &lt;div&gt;&lt;p&gt;Column 3&lt;/p&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Alerts Section -->
+      <section id="alerts">
+        <h2>Alerts</h2>
+        <p>Details/summary elements for expandable alerts.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <details>
+              <summary>Click to expand</summary>
+              <p>This content is hidden by default and revealed when you click the summary.</p>
+              <p>Perfect for FAQs, alerts, or collapsible content.</p>
+            </details>
+
+            <details open>
+              <summary>This one is open by default</summary>
+              <p>You can use the 'open' attribute to show content by default.</p>
+            </details>
+          </div>
+
+          <pre data-code><code>&lt;details&gt;
+  &lt;summary&gt;Click to expand&lt;/summary&gt;
+  &lt;p&gt;Hidden content revealed on click.&lt;/p&gt;
+&lt;/details&gt;
+
+&lt;details open&gt;
+  &lt;summary&gt;Open by default&lt;/summary&gt;
+  &lt;p&gt;Visible by default.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- Switch Button Section -->
+      <section id="switch">
+        <h2>Switch Button</h2>
+        <p>Toggle switch component with smooth animations.</p>
+
+        <article data-code-viewer>
+          <label data-switch data-toggle-view>
+            <input type="checkbox">
+            Show Code
+          </label>
+
+          <div data-preview>
+            <label data-switch>
+              <input type="checkbox">
+              Enable notifications
+            </label>
+
+            <label data-switch>
+              <input type="checkbox" checked>
+              Dark mode
+            </label>
+
+            <label data-switch>
+              <input type="checkbox" disabled>
+              Disabled option
+            </label>
+          </div>
+
+          <pre data-code><code>&lt;label data-switch&gt;
+  &lt;input type="checkbox"&gt;
+  Enable notifications
+&lt;/label&gt;
+
+&lt;label data-switch&gt;
+  &lt;input type="checkbox" checked&gt;
+  Dark mode
+&lt;/label&gt;
+
+&lt;label data-switch&gt;
+  &lt;input type="checkbox" disabled&gt;
+  Disabled option
+&lt;/label&gt;</code></pre>
+        </article>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Footer Component -->
+  <footer data-component="footer"></footer>
+</body>
+</html>

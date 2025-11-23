@@ -137,7 +137,7 @@ label + input {
           </header>
           <p>Comprehensive showcase of all NoCSS components: navigation, forms, buttons, cards, tabs, modals, and more.</p>
           <footer>
-            <a href="components.html">View Components →</a>
+            <a href="examples/components.html">View Components →</a>
           </footer>
         </article>
 
@@ -277,7 +277,7 @@ label + input {
       <article>
         <h3>Next Steps</h3>
         <ul>
-          <li><a href="components.html">Browse the components library</a></li>
+          <li><a href="examples/components.html">Browse the components library</a></li>
           <li><a href="examples/code-examples.html">See syntax highlighting examples</a></li>
           <li><a href="https://github.com">View on GitHub</a></li>
         </ul>

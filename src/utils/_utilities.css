@@ -68,10 +68,10 @@ button span {
   border-radius: var(--radius-full);
 }
 
-/* Span dans heading (subtitle) */
-h1 span,
-h2 span,
-h3 span {
+/* Span dans heading (subtitle) - sauf badges et tags */
+h1 span:not([data-badge]):not([data-tag]),
+h2 span:not([data-badge]):not([data-tag]),
+h3 span:not([data-badge]):not([data-tag]) {
   display: block;
   margin-top: var(--space-2);
   font-size: 0.6em;
@@ -80,6 +80,75 @@ h3 span {
   background: none;
   padding: 0;
   min-width: auto;
+}
+
+/* Badges colorés avec attributs data */
+[data-badge] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  line-height: 1;
+  border-radius: var(--radius-full);
+  background-color: var(--color-error-500);
+  color: var(--color-white);
+}
+
+[data-badge="success"] {
+  background-color: #10b981;
+  color: var(--color-white);
+}
+
+[data-badge="warning"] {
+  background-color: #f59e0b;
+  color: var(--color-white);
+}
+
+[data-badge="info"] {
+  background-color: #3b82f6;
+  color: var(--color-white);
+}
+
+[data-badge="neutral"] {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-700);
+}
+
+/* Tags colorés (plus grands que badges) */
+[data-tag] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-xs);
+  font-weight: var(--font-medium);
+  border-radius: var(--radius-base);
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-700);
+}
+
+[data-tag="success"] {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+[data-tag="warning"] {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: #d97706;
+}
+
+[data-tag="info"] {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: #2563eb;
+}
+
+[data-tag="error"] {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
 }
 
 /* HR - Séparateur thématique */
@@ -115,23 +184,6 @@ time {
   color: var(--color-text-tertiary);
 }
 
-/* Data attributes visuels */
-[data-badge]::after {
-  content: attr(data-badge);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: var(--space-5);
-  height: var(--space-5);
-  padding: 0 var(--space-2);
-  margin-left: var(--space-2);
-  font-size: var(--text-xs);
-  font-weight: var(--font-semibold);
-  line-height: 1;
-  color: var(--color-white);
-  background-color: var(--color-error-500);
-  border-radius: var(--radius-full);
-}
 
 /* Kbd (keyboard key) */
 kbd {
@@ -319,6 +371,21 @@ div:has(> img + img) img:hover {
 
 /* Mode sombre */
 @media (prefers-color-scheme: dark) {
+  html.theme-auto a,
+  a {
+    color: var(--color-gray-300);
+  }
+
+  html.theme-auto a:hover,
+  a:hover {
+    color: var(--color-white);
+  }
+
+  html.theme-auto a:active,
+  a:active {
+    color: var(--color-gray-100);
+  }
+
   kbd {
     background-color: var(--color-gray-800);
     border-color: var(--color-gray-700);
@@ -365,4 +432,17 @@ div:has(> img + img) img:hover {
     background-color: var(--color-error-900);
     color: var(--color-error-100);
   }
+}
+
+/* Mode sombre forcé */
+html.theme-dark a {
+  color: var(--color-gray-300);
+}
+
+html.theme-dark a:hover {
+  color: var(--color-white);
+}
+
+html.theme-dark a:active {
+  color: var(--color-gray-100);
 }

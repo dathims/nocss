@@ -5,19 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>NoCSS - Component Showcase</title>
   <link rel="stylesheet" href="../dist/nocss.css">
+  <script src="../dist/component-loader.js"></script>
+  <script src="../dist/nocss.js" defer></script>
 </head>
 <body>
   <!-- Navigation -->
-  <nav>
-    <a href="/">NoCSS</a>
-    <ul>
-      <li><a href="#typography">Typography</a></li>
-      <li><a href="#forms">Forms</a></li>
-      <li><a href="#buttons">Buttons</a></li>
-      <li><a href="#cards">Cards</a></li>
-      <li><a href="#utilities">Utilities</a></li>
-    </ul>
-  </nav>
+  <!-- Navigation Component -->
+  <nav data-component="header"></nav>
 
   <!-- Main Content -->
   <main>
@@ -179,108 +173,7 @@
             <h3>Card Title 1</h3>
           </header>
           <p>This is a card with automatic styling. No classes needed!</p>
-          <footer>
-            <button>Read More</button>
-          </footer>
-        </article>
-
-        <article>
-          <header>
-            <h3>Card Title 2</h3>
-          </header>
-          <p>Cards automatically arrange themselves in a responsive grid based on screen size.</p>
-          <footer>
-            <button>Read More</button>
-          </footer>
-        </article>
-
-        <article>
-          <header>
-            <h3>Card Title 3</h3>
-          </header>
-          <p>Hover over cards to see the subtle interaction effects.</p>
-          <footer>
-            <button>Read More</button>
-          </footer>
-        </article>
-      </div>
-
-      <hr>
-    </section>
-
-    <!-- Utilities Section -->
-    <section id="utilities">
-      <h2>Utilities</h2>
-
-      <h3>Links</h3>
-      <p>
-        <a href="#">Internal link</a> |
-        <a href="https://example.com">External link (with auto icon)</a> |
-        <a href="file.pdf" download>Download link</a>
-      </p>
-
-      <h3>Alerts</h3>
-      <div role="alert">
-        This is a default alert message.
-      </div>
-
-      <div role="alert" data-type="success">
-        Success! Your operation completed successfully.
-      </div>
-
-      <div role="alert" data-type="warning">
-        Warning! Please review this carefully.
-      </div>
-
-      <div role="alert" data-type="error">
-        Error! Something went wrong.
-      </div>
-
-      <h3>Progress Bar</h3>
-      <progress value="70" max="100"></progress>
-
-      <h3>Keyboard Shortcuts</h3>
-      <p>Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save your work.</p>
-
-      <h3>Accordion</h3>
-      <details>
-        <summary>Click to expand</summary>
-        <p>This content is hidden until you click the summary. Perfect for FAQs!</p>
-      </details>
-
-      <details>
-        <summary>Another accordion item</summary>
-        <p>Accordions work automatically with the details/summary elements.</p>
-      </details>
-
-      <hr>
-    </section>
-
-    <!-- Navigation Examples -->
-    <section>
-      <h2>Navigation Examples</h2>
-
-      <h3>Breadcrumb</h3>
-      <nav>
-        <ol>
-          <li><a href="/">Home</a></li>
-          <li><a href="/products">Products</a></li>
-          <li>Current Page</li>
-        </ol>
-      </nav>
-
-      <h3>Tabs</h3>
-      <nav role="tablist">
-        <a href="#tab1" class="active">Tab 1</a>
-        <a href="#tab2">Tab 2</a>
-        <a href="#tab3">Tab 3</a>
-      </nav>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2025 NoCSS Framework. No classes, no bloat, just semantic HTML.</p>
-  </footer>
+          <!-- Footer Component -->
+  <footer data-component="footer"></footer>
 </body>
 </html>

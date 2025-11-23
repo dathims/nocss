@@ -21,6 +21,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
 }
 
 /* Configuration de base */
@@ -131,7 +132,75 @@ h6 {
   background: var(--color-gray-400);
 }
 
-/* Support du mode sombre */
+/* ==========================================================================
+   Theme Overrides - Support manuel des thèmes
+   ========================================================================== */
+
+/* Thème Light forcé */
+html.theme-light {
+  color-scheme: light;
+  --color-text: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-background: var(--color-white);
+  --color-background-secondary: var(--color-gray-50);
+  --color-border: var(--color-gray-200);
+  --color-border-hover: var(--color-gray-300);
+}
+
+/* Thème Dark forcé - True Black pour OLED/QLED */
+html.theme-dark {
+  color-scheme: dark;
+  --color-text: var(--color-gray-50);
+  --color-text-secondary: var(--color-gray-400);
+  --color-text-tertiary: var(--color-gray-500);
+  --color-background: #000000;
+  --color-background-secondary: #0a0a0a;
+  --color-border: #1a1a1a;
+  --color-border-hover: var(--color-gray-600);
+}
+
+html.theme-dark ::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+html.theme-dark ::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-color: #0a0a0a;
+}
+
+html.theme-dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gray-500);
+}
+
+/* Thème Auto - suit les préférences système (True Black pour OLED/QLED) */
+@media (prefers-color-scheme: dark) {
+  html.theme-auto {
+    color-scheme: dark;
+    --color-text: var(--color-gray-50);
+    --color-text-secondary: var(--color-gray-400);
+    --color-text-tertiary: var(--color-gray-500);
+    --color-background: #000000;
+    --color-background-secondary: #0a0a0a;
+    --color-border: #1a1a1a;
+    --color-border-hover: var(--color-gray-600);
+  }
+
+  html.theme-auto ::-webkit-scrollbar-track {
+    background: #0a0a0a;
+  }
+
+  html.theme-auto ::-webkit-scrollbar-thumb {
+    background: #2a2a2a;
+    border-color: #0a0a0a;
+  }
+
+  html.theme-auto ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-500);
+  }
+}
+
+/* Support du mode sombre (legacy - pour compatibilité sans JS) */
 @media (prefers-color-scheme: dark) {
   :root {
     --color-text: var(--color-gray-50);

@@ -1,0 +1,81 @@
+/**
+ * Switch Button Component
+ * Toggle switch with smooth transitions
+ * Usage: <label data-switch><input type="checkbox">Label</label>
+ */
+
+/* Container */
+label[data-switch] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+}
+
+/* Hide native checkbox */
+label[data-switch] input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Track (::before) */
+label[data-switch]::before {
+  content: "";
+  display: inline-block;
+  width: 44px;
+  height: 24px;
+  background-color: var(--color-border);
+  border-radius: 12px;
+  transition: background-color 0.2s ease;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Thumb (::after) */
+label[data-switch]::after {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Checked state */
+label[data-switch] input[type="checkbox"]:checked + *::before,
+label[data-switch]:has(input[type="checkbox"]:checked)::before {
+  background-color: var(--color-primary-600);
+}
+
+label[data-switch] input[type="checkbox"]:checked + *::after,
+label[data-switch]:has(input[type="checkbox"]:checked)::after {
+  transform: translateY(-50%) translateX(20px);
+}
+
+/* Focus state */
+label[data-switch] input[type="checkbox"]:focus-visible ~ *::before,
+label[data-switch]:has(input[type="checkbox"]:focus-visible)::before {
+  outline: 2px solid var(--color-primary-600);
+  outline-offset: 2px;
+}
+
+/* Disabled state */
+label[data-switch]:has(input[type="checkbox"]:disabled) {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  label[data-switch]::after {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+}

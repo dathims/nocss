@@ -25,6 +25,10 @@
 @import "./components/_containers.css";
 @import "./components/_tabs.css";
 @import "./components/_overlays.css";
+@import "./components/_tables.css";
+@import "./components/_code.css";
+@import "./components/_switch.css";
+@import "./components/_alerts.css";
 
 /* ==========================================================================
    Utils - Utilitaires

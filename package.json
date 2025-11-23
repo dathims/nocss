@@ -1,24 +1,38 @@
 {
-  "name": "nocss",
+  "name": "nocss-framework",
   "version": "0.1.0",
-  "description": "A revolutionary CSS framework that styles your HTML based on structure, not classes",
-  "main": "dist/nocss.css",
+  "description": "A classless CSS framework that styles semantic HTML intelligently using CSS selectors and contextual detection",
+  "main": "dist/nocss.min.css",
   "scripts": {
     "dev": "npm run build:css && npm run build:js",
     "build": "npm run build:css && npm run build:js",
     "build:css": "postcss src/nocss.css -o dist/nocss.css && postcss src/nocss.css -o dist/nocss.min.css --env production",
-    "build:js": "cp src/nocss.js dist/nocss.js",
-    "serve": "python3 -m http.server 8080"
+    "build:js": "cp src/nocss.js dist/nocss.js && cp src/component-loader.js dist/component-loader.js",
+    "serve": "serve . -p 8080 --single"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dathims/nocss.git"
+  },
+  "homepage": "https://dathims.github.io/nocss",
+  "bugs": {
+    "url": "https://github.com/dathims/nocss/issues"
   },
   "keywords": [
     "css",
     "framework",
+    "classless",
     "no-classes",
     "semantic-html",
     "mobile-first",
-    "minimal"
+    "responsive",
+    "dark-mode",
+    "accessible",
+    "modern-css",
+    "has-selector",
+    "contextual-styling"
   ],
-  "author": "",
+  "author": "dathims",
   "license": "MIT",
   "devDependencies": {
     "autoprefixer": "^10.4.16",
@@ -26,6 +40,7 @@
     "postcss": "^8.4.32",
     "postcss-cli": "^11.0.0",
     "postcss-import": "^16.1.1",
-    "postcss-nesting": "^12.0.1"
+    "postcss-nesting": "^12.0.1",
+    "serve": "^14.2.1"
   }
 }

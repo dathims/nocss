@@ -11,16 +11,20 @@ nav {
   padding: var(--space-4);
   background-color: var(--color-background);
   border-bottom: 1px solid var(--color-border);
+  flex-wrap: nowrap;
+  position: relative;
 }
 
 /* Nav avec ul > li (menu horizontal) */
 nav ul {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: var(--space-2);
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-grow: 1;
+  justify-content: center;
 }
 
 nav li {
@@ -57,10 +61,10 @@ nav a.active {
 /* Nav avec logo (premier enfant) */
 nav > a:first-child,
 nav > div:first-child {
-  margin-right: auto;
   font-size: var(--text-lg);
   font-weight: var(--font-bold);
   color: var(--color-text);
+  flex-shrink: 0;
 }
 
 nav > a:first-child:hover {
@@ -74,17 +78,15 @@ nav a img {
   height: var(--space-4);
 }
 
-/* Menu vertical (nav sans ul) */
-nav:has(> a:not(:only-child)) {
+/* Menu vertical (nav dans aside uniquement) */
+aside nav:has(> a:not(:only-child)) {
   flex-direction: column;
   align-items: stretch;
   gap: var(--space-1);
   padding: var(--space-4);
-  border-right: 1px solid var(--color-border);
-  border-bottom: none;
 }
 
-nav:has(> a:not(:only-child)) > a {
+aside nav:has(> a:not(:only-child)) > a {
   width: 100%;
   justify-content: flex-start;
 }
@@ -165,6 +167,17 @@ nav ul li:focus-within > ul {
   display: flex;
 }
 
+/* Pont invisible pour éviter mouseout lors du passage vers le dropdown */
+nav ul li:hover::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: var(--space-2);
+  pointer-events: auto;
+}
+
 nav ul li ul li {
   width: 100%;
 }
@@ -176,68 +189,162 @@ nav ul li ul a {
 
 /* Menu mobile - Hamburger pattern */
 /* Bouton hamburger - caché par défaut, visible sur mobile */
-nav button {
+nav > button:not([data-theme]) {
   display: none;
   padding: var(--space-2);
   background: none;
   color: var(--color-text);
-  margin-left: auto;
+  flex-shrink: 0;
 }
 
-nav button svg {
+nav > button:not([data-theme]) svg {
   width: var(--space-6);
   height: var(--space-6);
 }
 
 /* Mobile - afficher le hamburger et cacher le menu */
 @media (max-width: 767px) {
-  nav {
-    flex-wrap: wrap;
+  body > header:first-child nav {
+    flex-wrap: nowrap;
   }
 
-  /* Afficher le bouton hamburger sur mobile */
-  nav button {
-    display: flex;
+  /* Logo reste à gauche */
+  body > header:first-child nav > a:first-child {
+    flex-shrink: 0;
   }
 
-  /* Cacher le menu par défaut sur mobile */
-  nav ul {
+  /* Menu caché par défaut sur mobile */
+  body > header:first-child nav ul {
     display: none;
-    width: 100%;
+    position: fixed;
+    top: 73px;
+    left: 0;
+    right: 0;
+    background-color: var(--color-background);
+    border-bottom: 1px solid var(--color-border);
     flex-direction: column;
-    gap: var(--space-2);
+    padding: var(--space-4);
+    z-index: 1000;
+    box-shadow: var(--shadow-lg);
   }
 
   /* Révéler le menu quand .open est ajouté via JS */
-  nav.open ul {
+  body > header:first-child nav.open ul {
     display: flex;
   }
 
-  nav ul li {
-    width: 100%;
+  /* Les dropdowns en mode mobile */
+  body > header:first-child nav ul li ul {
+    position: static;
+    box-shadow: none;
+    border: none;
+    border-left: 2px solid var(--color-border);
+    margin-left: var(--space-4);
+    margin-top: var(--space-2);
   }
 
-  nav ul li a {
-    width: 100%;
-    justify-content: flex-start;
+  /* Theme switcher garde margin-left auto pour rester à droite */
+  body > header:first-child nav [data-theme-switcher] {
+    flex-shrink: 0;
+  }
+
+  /* Afficher le bouton hamburger sur mobile */
+  body > header:first-child nav > button:not([data-theme]) {
+    display: flex;
+    flex-shrink: 0;
+    margin-left: var(--space-2);
+    order: 10;
+  }
+
+  /* Aside nav -> Bottom sticky nav sur mobile */
+  aside {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    height: auto !important;
+    z-index: 999 !important;
+    border-right: none !important;
+    border-top: 1px solid var(--color-border) !important;
+    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1) !important;
+    background-color: var(--color-background) !important;
+  }
+
+  aside nav {
+    flex-direction: row !important;
+    padding: var(--space-2) !important;
+    gap: var(--space-1) !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  aside nav h3 {
+    display: none;
+  }
+
+  aside nav > a {
+    flex: 0 0 auto !important;
+    padding: var(--space-2) var(--space-3) !important;
+    font-size: var(--text-xs) !important;
+    white-space: nowrap !important;
+    border-radius: var(--radius-base) !important;
+  }
+
+  /* Ajouter padding-bottom au main pour éviter que le contenu soit caché par la nav sticky */
+  main {
+    padding-bottom: calc(60px + var(--space-4)) !important;
   }
 }
 
 /* Sidebar navigation (aside nav) */
 aside nav {
+  display: flex;
   flex-direction: column;
   align-items: stretch;
-  border-right: 1px solid var(--color-border);
-  border-bottom: none;
-  min-height: 100vh;
+  gap: var(--space-1);
+  padding: var(--space-4);
 }
 
-aside nav ul {
-  flex-direction: column;
+/* Liens directs dans aside nav (sans ul) */
+aside nav > a {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  border-radius: var(--radius-base);
+  transition: all var(--transition-fast);
   width: 100%;
 }
 
-aside nav a {
+aside nav > a:hover {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-600);
+}
+
+/* Lien actif dans sidebar */
+aside nav > a[aria-current="page"],
+aside nav > a[aria-current="location"] {
+  background-color: var(--color-primary-50);
+  color: var(--color-primary-600);
+  font-weight: var(--font-semibold);
+}
+
+/* Si la sidebar utilise des ul */
+aside nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+aside nav ul a {
   width: 100%;
   justify-content: flex-start;
 }
@@ -302,18 +409,128 @@ nav[role="tablist"] a.active::after {
   }
 }
 
-/* Mode sombre */
+/* Mode sombre - auto */
 @media (prefers-color-scheme: dark) {
-  nav a:hover {
-    background-color: var(--color-primary-900);
+  html.theme-auto nav a,
+  nav a {
+    color: var(--color-gray-400);
   }
 
+  html.theme-auto nav a:hover,
+  nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+  }
+
+  html.theme-auto nav a[aria-current="page"],
+  html.theme-auto nav a.active,
+  nav a[aria-current="page"],
+  nav a.active {
+    color: var(--color-white);
+  }
+
+  html.theme-auto nav ul li ul,
   nav ul li ul {
-    background-color: var(--color-gray-800);
+    background-color: #0a0a0a;
     box-shadow: var(--shadow-xl);
   }
 
+  html.theme-auto nav[role="tablist"] a:hover,
   nav[role="tablist"] a:hover {
-    background-color: var(--color-gray-800);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
   }
+}
+
+/* Mode sombre - forcé */
+html.theme-dark nav a {
+  color: var(--color-gray-400);
+}
+
+html.theme-dark nav a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+}
+
+html.theme-dark nav a[aria-current="page"],
+html.theme-dark nav a.active {
+  color: var(--color-white);
+}
+
+html.theme-dark nav ul li ul {
+  background-color: #0a0a0a;
+  box-shadow: var(--shadow-xl);
+}
+
+html.theme-dark nav[role="tablist"] a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+}
+
+/* ==========================================================================
+   Theme Switcher - Boutons de changement de thème
+   ========================================================================== */
+
+/* Positionnement dans nav */
+nav [data-theme-switcher] {
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+/* Styles du conteneur theme switcher */
+[data-theme-switcher] {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1);
+  background-color: var(--color-background-secondary);
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+}
+
+[data-theme-switcher] button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  padding: var(--space-2);
+  background-color: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: background-color var(--transition-fast),
+              color var(--transition-fast),
+              transform var(--transition-fast);
+}
+
+[data-theme-switcher] button:hover {
+  background-color: var(--color-gray-200);
+  color: var(--color-text);
+}
+
+[data-theme-switcher] button[aria-pressed="true"] {
+  background-color: var(--color-primary-600);
+  color: var(--color-white);
+}
+
+[data-theme-switcher] button:active {
+  transform: scale(0.95);
+}
+
+[data-theme-switcher] button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Mode sombre pour theme switcher */
+@media (prefers-color-scheme: dark) {
+  [data-theme-switcher] button:hover {
+    background-color: var(--color-gray-700);
+  }
+}
+
+html.theme-dark [data-theme-switcher] button:hover {
+  background-color: var(--color-gray-700);
 }
