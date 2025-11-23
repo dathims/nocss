@@ -23,6 +23,8 @@
 @import "./components/_forms.css";
 @import "./components/_navigation.css";
 @import "./components/_containers.css";
+@import "./components/_tabs.css";
+@import "./components/_overlays.css";
 
 /* ==========================================================================
    Utils - Utilitaires

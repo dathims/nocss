@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NoCSS - Style Without Classes</title>
+  <link rel="stylesheet" href="dist/nocss.css">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <a href="/">NoCSS</a>
+    <ul>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#examples">Examples</a></li>
+      <li><a href="#components">Components</a></li>
+      <li><a href="examples/form-example.html">Form Demo</a></li>
+      <li><a href="examples/landing-page.html">Landing Demo</a></li>
+      <li><a href="examples/dashboard.html">Dashboard Demo</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- Hero Section -->
+    <header>
+      <h1>NoCSS Framework</h1>
+      <span>Style your HTML based on structure, not classes</span>
+      <p>NoCSS is a revolutionary CSS framework that uses intelligent contextual selectors to automatically style your HTML. Write semantic markup and let the framework handle the rest.</p>
+    </header>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy">
+      <h2>Philosophy</h2>
+
+      <article>
+        <h3>🎯 The Problem</h3>
+        <p>Traditional CSS frameworks force you to clutter your HTML with utility classes:</p>
+        <pre><code>&lt;button class="btn btn-primary btn-lg
+       flex items-center gap-2
+       px-6 py-3 rounded-lg
+       shadow-md hover:shadow-lg"&gt;
+  &lt;svg class="w-5 h-5"&gt;...&lt;/svg&gt;
+  Click me
+&lt;/button&gt;</code></pre>
+      </article>
+
+      <article>
+        <h3>✨ Our Solution</h3>
+        <p>NoCSS uses modern CSS selectors to detect structure and context:</p>
+        <pre><code>&lt;button&gt;
+  &lt;svg&gt;...&lt;/svg&gt;
+  Click me
+&lt;/button&gt;</code></pre>
+        <p>The framework automatically detects that your button contains an SVG and applies appropriate spacing, alignment, and styling.</p>
+      </article>
+
+      <article>
+        <h3>🧠 How It Works</h3>
+        <p>NoCSS leverages cutting-edge CSS features to create "intelligent" stylesheets:</p>
+
+        <h4>1. Structural Detection</h4>
+        <p>Using the <code>:has()</code> selector, we detect what's inside elements:</p>
+        <ul>
+          <li><code>button:has(svg)</code> → Button with icon gets automatic spacing</li>
+          <li><code>label:has(input[type="checkbox"])</code> → Inline checkbox label</li>
+          <li><code>div:has(> article + article)</code> → Multiple cards create a grid</li>
+        </ul>
+
+        <h4>2. Relationship Detection</h4>
+        <p>Using combinators (<code>+</code>, <code>></code>, <code>~</code>) to detect relationships:</p>
+        <ul>
+          <li><code>label + input</code> → Input after label gets proper spacing</li>
+          <li><code>input:invalid + span</code> → Error message styling</li>
+          <li><code>article > img:first-child</code> → Cover image fills card width</li>
+        </ul>
+
+        <h4>3. Position Detection</h4>
+        <p>Using positional pseudo-classes for context-aware styling:</p>
+        <ul>
+          <li><code>button:first-of-type</code> → Primary button styling</li>
+          <li><code>button:nth-of-type(n+2)</code> → Secondary buttons</li>
+          <li><code>section:nth-child(even)</code> → Alternating backgrounds</li>
+        </ul>
+
+        <h4>4. Attribute Detection</h4>
+        <p>Using attribute selectors for semantic meaning:</p>
+        <ul>
+          <li><code>[role="alert"]</code> → Alert styling</li>
+          <li><code>[aria-current="page"]</code> → Active navigation link</li>
+          <li><code>a[href^="http"]</code> → External link icon</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>🎨 Design Principles</h3>
+        <ul>
+          <li><strong>Semantic First</strong> - HTML should describe content, not appearance</li>
+          <li><strong>Context Aware</strong> - Styling adapts to element relationships</li>
+          <li><strong>Mobile First</strong> - Responsive by default</li>
+          <li><strong>Accessible</strong> - Built-in focus states and ARIA support</li>
+          <li><strong>Minimal</strong> - Clean, modern, flat design aesthetic</li>
+          <li><strong>Performant</strong> - No JavaScript required for styling</li>
+        </ul>
+      </article>
+
+      <article>
+        <h3>⚠️ Trade-offs & Limitations</h3>
+        <p>NoCSS is powerful but comes with considerations:</p>
+
+        <h4>Browser Support</h4>
+        <ul>
+          <li>Requires modern browsers with <code>:has()</code> support</li>
+          <li>Chrome 105+, Firefox 121+, Safari 15.4+, Edge 105+</li>
+        </ul>
+
+        <h4>When NoCSS Shines</h4>
+        <ul>
+          <li>Content-heavy sites (blogs, documentation)</li>
+          <li>Prototypes and MVPs</li>
+          <li>Projects prioritizing clean markup</li>
+          <li>Teams valuing semantic HTML</li>
+        </ul>
+
+        <h4>When to Use Traditional Frameworks</h4>
+        <ul>
+          <li>Highly custom, pixel-perfect designs</li>
+          <li>Need for legacy browser support</li>
+          <li>Very specific visual requirements</li>
+          <li>When utility classes are preferred</li>
+        </ul>
+      </article>
+    </section>
+
+    <hr>
+
+    <!-- Examples Section -->
+    <section id="examples">
+      <h2>Interactive Examples</h2>
+      <p>Explore how NoCSS styles common components automatically.</p>
+    </section>
+
+    <!-- Components Section -->
+    <section id="components">
+      <h2>Components Showcase</h2>
+      <p>All components below are styled without any utility classes. Click the examples to see more.</p>
+
+      <!-- Navigation Examples -->
+      <article>
+        <header>
+          <h3>Navigation</h3>
+        </header>
+        <p>Horizontal navigation bar styled automatically:</p>
+        <nav>
+          <a href="#">Home</a>
+          <ul>
+            <li><a href="#" aria-current="page">About</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </article>
+
+      <!-- Forms Examples -->
+      <article>
+        <header>
+          <h3>Forms</h3>
+        </header>
+        <p>Intelligent form styling based on structure:</p>
+        <form>
+          <div>
+            <label>Email Address</label>
+            <input type="email" placeholder="you@example.com" />
+          </div>
+
+          <label>
+            <input type="checkbox" />
+            Subscribe to newsletter
+          </label>
+
+          <div>
+            <button>Submit</button>
+            <button>Cancel</button>
+          </div>
+        </form>
+      </article>
+
+      <!-- Buttons Examples -->
+      <article>
+        <header>
+          <h3>Buttons</h3>
+        </header>
+        <p>Button variants based on position (first = primary, others = secondary):</p>
+        <div>
+          <button>Primary Action</button>
+          <button>Secondary Action</button>
+          <button>Tertiary Action</button>
+        </div>
+
+        <p>Buttons with icons get automatic spacing:</p>
+        <div>
+          <button>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/>
+            </svg>
+            Add Item
+          </button>
+          <button>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z"/>
+            </svg>
+            Edit
+          </button>
+        </div>
+      </article>
+
+      <!-- Cards Examples -->
+      <article>
+        <header>
+          <h3>Cards</h3>
+        </header>
+        <p>Multiple articles automatically create a responsive grid:</p>
+        <div>
+          <article>
+            <header>
+              <h4>Card One</h4>
+            </header>
+            <p>This card has automatic styling including hover effects and shadows.</p>
+          </article>
+          <article>
+            <header>
+              <h4>Card Two</h4>
+            </header>
+            <p>Cards arrange themselves in a grid based on screen size.</p>
+          </article>
+          <article>
+            <header>
+              <h4>Card Three</h4>
+            </header>
+            <p>No classes needed - just semantic HTML structure.</p>
+          </article>
+        </div>
+      </article>
+
+      <!-- Typography Examples -->
+      <article>
+        <header>
+          <h3>Typography</h3>
+        </header>
+        <p>Automatic typographic hierarchy:</p>
+        <h1>Heading 1</h1>
+        <h2>Heading 2</h2>
+        <h3>Heading 3</h3>
+        <p>Paragraphs with <strong>bold</strong>, <em>italic</em>, and <a href="#">links</a> are styled automatically.</p>
+        <blockquote>
+          <p>Blockquotes get beautiful styling with no effort.</p>
+          <cite>NoCSS Team</cite>
+        </blockquote>
+      </article>
+
+      <!-- Utilities Examples -->
+      <article>
+        <header>
+          <h3>Utilities</h3>
+        </header>
+
+        <h4>Alerts</h4>
+        <div role="alert" data-type="success">
+          Success! Your operation completed successfully.
+        </div>
+
+        <h4>Progress</h4>
+        <progress value="75" max="100"></progress>
+
+        <h4>Keyboard Shortcuts</h4>
+        <p>Press <kbd>Ctrl</kbd> + <kbd>S</kbd> to save</p>
+      </article>
+    </section>
+
+    <!-- Getting Started -->
+    <section>
+      <h2>Getting Started</h2>
+
+      <article>
+        <h3>Installation</h3>
+        <pre><code>&lt;!-- Add to your HTML head --&gt;
+&lt;link rel="stylesheet" href="dist/nocss.min.css"&gt;</code></pre>
+      </article>
+
+      <article>
+        <h3>Basic Usage</h3>
+        <pre><code>&lt;form&gt;
+  &lt;label&gt;Name&lt;/label&gt;
+  &lt;input type="text" /&gt;
+
+  &lt;button&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+        <p>That's it! NoCSS handles the styling automatically.</p>
+      </article>
+
+      <article>
+        <h3>Explore More</h3>
+        <ul>
+          <li><a href="examples/form-example.html">Complete Form Example</a></li>
+          <li><a href="examples/landing-page.html">Landing Page Template</a></li>
+          <li><a href="examples/dashboard.html">Dashboard Layout</a></li>
+          <li><a href="https://github.com">GitHub Repository</a></li>
+        </ul>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 NoCSS Framework. MIT License.</p>
+    <p>No classes, no bloat, just semantic HTML.</p>
+  </footer>
+
+  <script src="dist/nocss.js"></script>
+</body>
+</html>

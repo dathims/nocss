@@ -4,8 +4,10 @@
   "description": "A revolutionary CSS framework that styles your HTML based on structure, not classes",
   "main": "dist/nocss.css",
   "scripts": {
-    "dev": "postcss src/nocss.css -o dist/nocss.css --watch",
-    "build": "postcss src/nocss.css -o dist/nocss.css && postcss src/nocss.css -o dist/nocss.min.css --env production",
+    "dev": "npm run build:css && npm run build:js",
+    "build": "npm run build:css && npm run build:js",
+    "build:css": "postcss src/nocss.css -o dist/nocss.css && postcss src/nocss.css -o dist/nocss.min.css --env production",
+    "build:js": "cp src/nocss.js dist/nocss.js",
     "serve": "python3 -m http.server 8080"
   },
   "keywords": [

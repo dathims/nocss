@@ -795,6 +795,45 @@ input[type="reset"]:hover {
   background-color: var(--color-gray-300);
 }
 
+/* Button variants based on position */
+
+/* First button = Primary (default styling above) */
+
+/* Secondary buttons (2nd and beyond) */
+
+button:nth-of-type(n+2),
+input[type="button"]:nth-of-type(n+2),
+div button:nth-of-type(n+2),
+form button:nth-of-type(n+2) {
+  background-color: var(--color-gray-600);
+  color: var(--color-white);
+}
+
+button:nth-of-type(n+2):hover,
+input[type="button"]:nth-of-type(n+2):hover,
+div button:nth-of-type(n+2):hover,
+form button:nth-of-type(n+2):hover {
+  background-color: var(--color-gray-700);
+}
+
+/* Tertiary buttons (last in group of 3+) - outline style */
+
+button:nth-of-type(n+3):last-of-type,
+div button:nth-of-type(n+3):last-of-type,
+form button:nth-of-type(n+3):last-of-type {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border: 2px solid var(--color-primary-600);
+}
+
+button:nth-of-type(n+3):last-of-type:hover,
+div button:nth-of-type(n+3):last-of-type:hover,
+form button:nth-of-type(n+3):last-of-type:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-700);
+  color: var(--color-primary-700);
+}
+
 /* Contexte : Label suivi d'Input (pattern classique) */
 
 label + input[type="text"],
@@ -1579,6 +1618,627 @@ div:has(> article:only-child) {
 
   dialog {
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ==========================================================================
+   NoCSS Tabs
+   Système de tabs style Chrome avec :target
+   ========================================================================== */
+
+/* Container de tabs */
+
+[data-tabs] {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Navigation des tabs (style Chrome) */
+
+[data-tabs] > nav {
+  display: flex;
+  gap: var(--space-1);
+  padding: 0;
+  background-color: var(--color-background-secondary);
+  border-bottom: 2px solid var(--color-border);
+  overflow-x: auto;
+}
+
+[data-tabs] > nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-6);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  color: var(--color-text-secondary);
+  background-color: transparent;
+  border: none;
+  border-top-left-radius: var(--radius-md);
+  border-top-right-radius: var(--radius-md);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+[data-tabs] > nav a:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-text);
+}
+
+/* Tab active (détecté via :target sur le contenu) */
+
+[data-tabs] > nav a[href="#preview"]:has(~ div [data-tab="preview"]:target),
+[data-tabs] > nav a[href="#code"]:has(~ div [data-tab="code"]:target) {
+  background-color: var(--color-background);
+  color: var(--color-primary-600);
+  font-weight: var(--font-semibold);
+}
+
+/* Méthode alternative : utiliser aria-selected */
+
+[data-tabs] > nav a[aria-selected="true"] {
+  background-color: var(--color-background);
+  color: var(--color-primary-600);
+  font-weight: var(--font-semibold);
+  border-bottom: 2px solid var(--color-background);
+  margin-bottom: -2px;
+}
+
+/* Container de contenu des tabs */
+
+[data-tabs] > div {
+  position: relative;
+  background-color: var(--color-background);
+  padding: var(--space-6);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* Panels de contenu - cachés par défaut */
+
+[data-tabs] [data-tab] {
+  display: none;
+}
+
+/* Panel actif via :target */
+
+[data-tabs] [data-tab]:target {
+  display: block;
+}
+
+/* Premier panel visible par défaut */
+
+[data-tabs] [data-tab]:first-of-type {
+  display: block;
+}
+
+[data-tabs] [data-tab]:first-of-type:target ~ [data-tab]:first-of-type {
+  display: none;
+}
+
+/* Animation de transition */
+
+[data-tabs] [data-tab]:target {
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tabs verticales (sidebar style) */
+
+[data-tabs][data-orientation="vertical"] {
+  flex-direction: row;
+}
+
+[data-tabs][data-orientation="vertical"] > nav {
+  flex-direction: column;
+  border-bottom: none;
+  border-right: 2px solid var(--color-border);
+  min-width: 200px;
+}
+
+[data-tabs][data-orientation="vertical"] > nav a {
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+  justify-content: flex-start;
+}
+
+[data-tabs][data-orientation="vertical"] > nav a[aria-selected="true"] {
+  border-bottom: none;
+  border-right: 2px solid var(--color-background);
+  margin-bottom: 0;
+  margin-right: -2px;
+}
+
+/* Tabs avec icônes */
+
+[data-tabs] > nav a svg,
+[data-tabs] > nav a img {
+  width: var(--space-4);
+  height: var(--space-4);
+}
+
+/* Badge dans tab */
+
+[data-tabs] > nav a span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--space-5);
+  padding: 0 var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--font-semibold);
+  line-height: var(--space-4);
+  color: var(--color-white);
+  background-color: var(--color-error-500);
+  border-radius: var(--radius-full);
+}
+
+/* Close button dans tab */
+
+[data-tabs] > nav a button {
+  padding: var(--space-1);
+  margin: 0;
+  margin-left: var(--space-1);
+  background: none;
+  border: none;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-tertiary);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+[data-tabs] > nav a:hover button {
+  opacity: 1;
+}
+
+[data-tabs] > nav a button:hover {
+  background-color: var(--color-gray-200);
+  color: var(--color-text);
+}
+
+/* Responsive - Mobile */
+
+@media (max-width: 767px) {
+  [data-tabs] > nav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  [data-tabs] > nav a {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-xs);
+  }
+
+  [data-tabs] > div {
+    padding: var(--space-4);
+  }
+}
+
+/* Mode sombre */
+
+@media (prefers-color-scheme: dark) {
+  [data-tabs] > nav {
+    background-color: var(--color-gray-900);
+  }
+
+  [data-tabs] > nav a:hover {
+    background-color: var(--color-gray-800);
+  }
+
+  [data-tabs] > nav a[aria-selected="true"] {
+    background-color: var(--color-gray-800);
+  }
+
+  [data-tabs] > div {
+    background-color: var(--color-gray-800);
+  }
+
+  [data-tabs] > nav a button:hover {
+    background-color: var(--color-gray-700);
+  }
+}
+
+/* ==========================================================================
+   NoCSS Overlays & Modals
+   Composants de dialogue et overlay
+   ========================================================================== */
+
+/* Dialog/Modal moderne */
+
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  background-color: var(--color-background);
+  overflow: hidden;
+  z-index: var(--z-modal);
+}
+
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Backdrop */
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header du modal */
+
+dialog > header {
+  padding: var(--space-6);
+  background: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+dialog > header h2,
+dialog > header h3 {
+  margin: 0;
+}
+
+/* Contenu du modal */
+
+dialog > article,
+dialog > section,
+dialog > div:not(:has(button)) {
+  padding: var(--space-6);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Footer du modal */
+
+dialog > footer {
+  padding: var(--space-6);
+  margin: 0;
+  background: none;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+/* Close button dans le header */
+
+dialog > header button:last-child {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  padding: var(--space-2);
+  background: none;
+  color: var(--color-text-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+dialog > header button:last-child:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-text);
+}
+
+/* Sizes variants */
+
+dialog[data-size="sm"] {
+  max-width: 400px;
+}
+
+dialog[data-size="md"] {
+  max-width: 600px;
+}
+
+dialog[data-size="lg"] {
+  max-width: 900px;
+}
+
+dialog[data-size="full"] {
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+/* Overlay personnalisé (alternative à dialog) */
+
+[data-overlay] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal-backdrop);
+  padding: var(--space-6);
+}
+
+[data-overlay][data-open="true"] {
+  display: flex;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Contenu dans overlay */
+
+[data-overlay] > * {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background-color: var(--color-background);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: auto;
+  animation: slideIn 0.3s ease-out;
+  z-index: var(--z-modal);
+}
+
+/* Popover (petit overlay) */
+
+[data-popover] {
+  position: absolute;
+  display: none;
+  padding: var(--space-4);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-popover);
+  max-width: 300px;
+}
+
+[data-popover][data-open="true"] {
+  display: block;
+  animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Arrow pour popover */
+
+[data-popover]::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+}
+
+[data-popover][data-position="top"]::before {
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--color-background);
+  border-bottom: none;
+}
+
+[data-popover][data-position="bottom"]::before {
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: var(--color-background);
+  border-top: none;
+}
+
+[data-popover][data-position="left"]::before {
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: var(--color-background);
+  border-right: none;
+}
+
+[data-popover][data-position="right"]::before {
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: var(--color-background);
+  border-left: none;
+}
+
+/* Toast notifications */
+
+[data-toast] {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-tooltip);
+  max-width: 400px;
+}
+
+[data-toast][data-open="true"] {
+  display: flex;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+[data-toast][data-type="success"] {
+  background-color: var(--color-success-600);
+}
+
+[data-toast][data-type="warning"] {
+  background-color: var(--color-warning-600);
+}
+
+[data-toast][data-type="error"] {
+  background-color: var(--color-error-600);
+}
+
+/* Drawer (side panel) */
+
+[data-drawer] {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 80vw;
+  display: none;
+  flex-direction: column;
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-modal);
+  overflow-y: auto;
+}
+
+[data-drawer][data-position="left"] {
+  left: 0;
+}
+
+[data-drawer][data-position="right"] {
+  right: 0;
+}
+
+[data-drawer][data-open="true"] {
+  display: flex;
+}
+
+[data-drawer][data-position="left"][data-open="true"] {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+[data-drawer][data-position="right"][data-open="true"] {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Backdrop pour drawer */
+
+[data-drawer-backdrop] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: calc(var(--z-modal) - 1);
+}
+
+[data-drawer-backdrop][data-open="true"] {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Responsive */
+
+@media (min-width: 768px) {
+  dialog {
+    max-width: 600px;
+  }
+
+  [data-drawer] {
+    width: 400px;
+  }
+}
+
+/* Mode sombre */
+
+@media (prefers-color-scheme: dark) {
+  dialog > header button:last-child:hover {
+    background-color: var(--color-gray-800);
+  }
+
+  [data-popover] {
+    background-color: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+
+  [data-popover][data-position="top"]::before {
+    border-top-color: var(--color-gray-800);
+  }
+
+  [data-popover][data-position="bottom"]::before {
+    border-bottom-color: var(--color-gray-800);
+  }
+
+  [data-popover][data-position="left"]::before {
+    border-left-color: var(--color-gray-800);
+  }
+
+  [data-popover][data-position="right"]::before {
+    border-right-color: var(--color-gray-800);
+  }
+
+  [data-toast] {
+    background-color: var(--color-gray-100);
+    color: var(--color-text);
   }
 }
 

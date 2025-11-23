@@ -33,11 +33,16 @@ NoCSS automatically detects that your button contains an SVG and applies the app
 - **Zero Classes**: No utility classes in your HTML markup
 - **Semantic HTML**: Write clean, accessible HTML
 - **Intelligent Selectors**: Context-aware styling based on element relationships
+- **Position-Based Variants**: Button styles adapt based on DOM position
+- **Chrome-Style Tabs**: Modern tab interface with :target support
+- **Modal & Overlays**: Dialog, drawer, popover, toast components
+- **Code Viewer**: Built-in toggle between code and preview
 - **Mobile-First**: Responsive design out of the box
 - **Modern Design**: Flat, minimalist aesthetic
 - **Dark Mode**: Automatic dark mode support via `prefers-color-scheme`
 - **Accessibility**: Built-in focus states and ARIA support
 - **System Fonts**: Fast-loading, native font stack
+- **JavaScript Helpers**: Optional JS for enhanced interactions
 
 ## Installation
 
@@ -56,6 +61,9 @@ Download `nocss.min.css` from the `/dist` folder and include it in your HTML:
 </head>
 <body>
   <!-- Your content here -->
+
+  <!-- Optional: Include JavaScript helpers for enhanced interactions -->
+  <script src="path/to/nocss.js"></script>
 </body>
 </html>
 ```
@@ -223,6 +231,149 @@ Common utility elements styled automatically:
 <!-- Tooltip -->
 <span data-tooltip="This is a tooltip">Hover me</span>
 ```
+
+### Button Variants (Position-based)
+
+NoCSS automatically styles buttons differently based on their position in the DOM:
+
+```html
+<div>
+  <button>Primary Action</button>    <!-- First button = Primary (blue) -->
+  <button>Secondary Action</button>  <!-- 2nd+ buttons = Secondary (gray) -->
+  <button>Tertiary Action</button>   <!-- Last in 3+ group = Tertiary (outline) -->
+</div>
+```
+
+**How it works:**
+- `button:first-of-type` → Primary styling (default blue)
+- `button:nth-of-type(n+2)` → Secondary styling (gray)
+- `button:nth-of-type(n+3):last-of-type` → Tertiary styling (outline)
+
+### Tabs (Chrome-style)
+
+Modern tab interface with automatic styling:
+
+```html
+<div data-tabs>
+  <nav>
+    <a href="#tab1" aria-selected="true">Tab 1</a>
+    <a href="#tab2">Tab 2</a>
+    <a href="#tab3">Tab 3</a>
+  </nav>
+  <div>
+    <div data-tab="tab1">Content 1</div>
+    <div data-tab="tab2" style="display: none;">Content 2</div>
+    <div data-tab="tab3" style="display: none;">Content 3</div>
+  </div>
+</div>
+```
+
+Features:
+- Chrome-like tab appearance
+- Automatic aria-selected handling via JavaScript
+- Supports icons and badges
+- Responsive mobile view
+
+### Modal & Dialog
+
+Accessible modal dialogs with backdrop:
+
+```html
+<button data-modal-trigger="my-modal">Open Modal</button>
+
+<dialog id="my-modal">
+  <header>
+    <h3>Modal Title</h3>
+    <button data-modal-close aria-label="Close">×</button>
+  </header>
+  <article>
+    <p>Modal content goes here.</p>
+  </article>
+  <footer>
+    <button>Confirm</button>
+    <button data-modal-close>Cancel</button>
+  </footer>
+</dialog>
+```
+
+Features:
+- Automatic backdrop with blur
+- Click outside or ESC to close
+- Focus trap
+- Size variants via `data-size="sm|md|lg|full"`
+
+### Overlays & Popovers
+
+Additional overlay components:
+
+```html
+<!-- Drawer (side panel) -->
+<div id="my-drawer" data-drawer data-position="left">
+  <h3>Drawer Content</h3>
+</div>
+
+<!-- Popover -->
+<div id="my-popover" data-popover data-position="bottom">
+  <p>Popover content with arrow</p>
+</div>
+
+<!-- Toast notification -->
+<div data-toast data-type="success" data-open="true">
+  Operation successful!
+</div>
+```
+
+### Code Viewer
+
+Built-in code/preview toggle for documentation:
+
+```html
+<article data-code-viewer>
+  <button data-toggle-view></button>
+
+  <div data-preview>
+    <!-- Your component here -->
+    <button>Click me</button>
+  </div>
+
+  <pre data-code><code>
+&lt;button&gt;Click me&lt;/button&gt;
+  </code></pre>
+</article>
+```
+
+The code viewer automatically extracts HTML from the preview and formats it.
+
+## JavaScript API
+
+NoCSS includes optional JavaScript helpers for enhanced interactions:
+
+```javascript
+// Auto-initialized on page load
+NoCSS.init();
+
+// Manual API usage
+NoCSS.modals.open('my-modal');
+NoCSS.modals.close(dialogElement);
+
+NoCSS.drawer.open('my-drawer');
+NoCSS.drawer.close('my-drawer');
+
+NoCSS.toast.show('Message', 'success', 3000);
+
+NoCSS.popover.show('triggerId', 'popoverId', 'bottom');
+
+// Positioning helpers
+NoCSS.position.center('my-element');
+NoCSS.position.sticky('my-header', 0);
+NoCSS.position.fixed('my-element', { top: 20, right: 20 });
+```
+
+All interactions work automatically with data attributes:
+- `data-modal-trigger="modal-id"` → Opens modal
+- `data-modal-close` → Closes current modal
+- `data-overlay-trigger="overlay-id"` → Opens overlay
+- `data-toggle-view` → Toggles code viewer
 
 ## Contextual Selectors
 

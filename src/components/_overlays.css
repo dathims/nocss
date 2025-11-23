@@ -1,0 +1,376 @@
+/* ==========================================================================
+   NoCSS Overlays & Modals
+   Composants de dialogue et overlay
+   ========================================================================== */
+
+/* Dialog/Modal moderne */
+dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  background-color: var(--color-background);
+  overflow: hidden;
+  z-index: var(--z-modal);
+}
+
+dialog[open] {
+  display: flex;
+  flex-direction: column;
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -48%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+/* Backdrop */
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Header du modal */
+dialog > header {
+  padding: var(--space-6);
+  background: none;
+  border-bottom: 1px solid var(--color-border);
+}
+
+dialog > header h2,
+dialog > header h3 {
+  margin: 0;
+}
+
+/* Contenu du modal */
+dialog > article,
+dialog > section,
+dialog > div:not(:has(button)) {
+  padding: var(--space-6);
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* Footer du modal */
+dialog > footer {
+  padding: var(--space-6);
+  margin: 0;
+  background: none;
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: var(--space-3);
+  justify-content: flex-end;
+}
+
+/* Close button dans le header */
+dialog > header button:last-child {
+  position: absolute;
+  top: var(--space-4);
+  right: var(--space-4);
+  padding: var(--space-2);
+  background: none;
+  color: var(--color-text-tertiary);
+  border-radius: var(--radius-sm);
+}
+
+dialog > header button:last-child:hover {
+  background-color: var(--color-gray-100);
+  color: var(--color-text);
+}
+
+/* Sizes variants */
+dialog[data-size="sm"] {
+  max-width: 400px;
+}
+
+dialog[data-size="md"] {
+  max-width: 600px;
+}
+
+dialog[data-size="lg"] {
+  max-width: 900px;
+}
+
+dialog[data-size="full"] {
+  max-width: 95vw;
+  max-height: 95vh;
+}
+
+/* Overlay personnalisé (alternative à dialog) */
+[data-overlay] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal-backdrop);
+  padding: var(--space-6);
+}
+
+[data-overlay][data-open="true"] {
+  display: flex;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Contenu dans overlay */
+[data-overlay] > * {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  background-color: var(--color-background);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  overflow: auto;
+  animation: slideIn 0.3s ease-out;
+  z-index: var(--z-modal);
+}
+
+/* Popover (petit overlay) */
+[data-popover] {
+  position: absolute;
+  display: none;
+  padding: var(--space-4);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-popover);
+  max-width: 300px;
+}
+
+[data-popover][data-open="true"] {
+  display: block;
+  animation: popIn 0.2s ease-out;
+}
+
+@keyframes popIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Arrow pour popover */
+[data-popover]::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 8px solid transparent;
+}
+
+[data-popover][data-position="top"]::before {
+  bottom: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: var(--color-background);
+  border-bottom: none;
+}
+
+[data-popover][data-position="bottom"]::before {
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: var(--color-background);
+  border-top: none;
+}
+
+[data-popover][data-position="left"]::before {
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-left-color: var(--color-background);
+  border-right: none;
+}
+
+[data-popover][data-position="right"]::before {
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+  border-right-color: var(--color-background);
+  border-left: none;
+}
+
+/* Toast notifications */
+[data-toast] {
+  position: fixed;
+  bottom: var(--space-6);
+  right: var(--space-6);
+  display: none;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-6);
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-tooltip);
+  max-width: 400px;
+}
+
+[data-toast][data-open="true"] {
+  display: flex;
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+[data-toast][data-type="success"] {
+  background-color: var(--color-success-600);
+}
+
+[data-toast][data-type="warning"] {
+  background-color: var(--color-warning-600);
+}
+
+[data-toast][data-type="error"] {
+  background-color: var(--color-error-600);
+}
+
+/* Drawer (side panel) */
+[data-drawer] {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  max-width: 80vw;
+  display: none;
+  flex-direction: column;
+  background-color: var(--color-background);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-modal);
+  overflow-y: auto;
+}
+
+[data-drawer][data-position="left"] {
+  left: 0;
+}
+
+[data-drawer][data-position="right"] {
+  right: 0;
+}
+
+[data-drawer][data-open="true"] {
+  display: flex;
+}
+
+[data-drawer][data-position="left"][data-open="true"] {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+[data-drawer][data-position="right"][data-open="true"] {
+  animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Backdrop pour drawer */
+[data-drawer-backdrop] {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: calc(var(--z-modal) - 1);
+}
+
+[data-drawer-backdrop][data-open="true"] {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+  dialog {
+    max-width: 600px;
+  }
+
+  [data-drawer] {
+    width: 400px;
+  }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+  dialog > header button:last-child:hover {
+    background-color: var(--color-gray-800);
+  }
+
+  [data-popover] {
+    background-color: var(--color-gray-800);
+    border-color: var(--color-gray-700);
+  }
+
+  [data-popover][data-position="top"]::before {
+    border-top-color: var(--color-gray-800);
+  }
+
+  [data-popover][data-position="bottom"]::before {
+    border-bottom-color: var(--color-gray-800);
+  }
+
+  [data-popover][data-position="left"]::before {
+    border-left-color: var(--color-gray-800);
+  }
+
+  [data-popover][data-position="right"]::before {
+    border-right-color: var(--color-gray-800);
+  }
+
+  [data-toast] {
+    background-color: var(--color-gray-100);
+    color: var(--color-text);
+  }
+}

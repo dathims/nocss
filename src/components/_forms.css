@@ -187,6 +187,42 @@ input[type="reset"]:hover {
   background-color: var(--color-gray-300);
 }
 
+/* Button variants based on position */
+/* First button = Primary (default styling above) */
+
+/* Secondary buttons (2nd and beyond) */
+button:nth-of-type(n+2),
+input[type="button"]:nth-of-type(n+2),
+div button:nth-of-type(n+2),
+form button:nth-of-type(n+2) {
+  background-color: var(--color-gray-600);
+  color: var(--color-white);
+}
+
+button:nth-of-type(n+2):hover,
+input[type="button"]:nth-of-type(n+2):hover,
+div button:nth-of-type(n+2):hover,
+form button:nth-of-type(n+2):hover {
+  background-color: var(--color-gray-700);
+}
+
+/* Tertiary buttons (last in group of 3+) - outline style */
+button:nth-of-type(n+3):last-of-type,
+div button:nth-of-type(n+3):last-of-type,
+form button:nth-of-type(n+3):last-of-type {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border: 2px solid var(--color-primary-600);
+}
+
+button:nth-of-type(n+3):last-of-type:hover,
+div button:nth-of-type(n+3):last-of-type:hover,
+form button:nth-of-type(n+3):last-of-type:hover {
+  background-color: var(--color-primary-50);
+  border-color: var(--color-primary-700);
+  color: var(--color-primary-700);
+}
+
 /* Contexte : Label suivi d'Input (pattern classique) */
 label + input[type="text"],
 label + input[type="email"],
