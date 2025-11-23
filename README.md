@@ -9,13 +9,13 @@
 ### CDN
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@dathims/nocss/dist/nocss.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nocss-framework/dist/nocss.min.css">
 ```
 
 ### npm
 
 ```bash
-npm install @dathims/nocss
+npm install nocss-framework
 ```
 
 ```html
@@ -44,7 +44,7 @@ Full documentation available in [docs/README.md](docs/README.md)
 ## Installation
 
 ```bash
-npm install @dathims/nocss
+npm install nocss-framework
 ```
 
 ## Browser Support

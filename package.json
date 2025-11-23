@@ -1,5 +1,5 @@
 {
-  "name": "@dathims/nocss",
+  "name": "nocss-framework",
   "version": "0.1.0",
   "description": "A classless CSS framework that styles semantic HTML intelligently using CSS selectors and contextual detection",
   "main": "dist/nocss.min.css",
