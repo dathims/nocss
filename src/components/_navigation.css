@@ -175,8 +175,8 @@ nav ul li ul a {
 }
 
 /* Menu mobile - Hamburger pattern */
-/* Quand nav contient un button suivi d'un ul */
-nav:has(button + ul) button {
+/* Bouton hamburger - caché par défaut, visible sur mobile */
+nav button {
   display: none;
   padding: var(--space-2);
   background: none;
@@ -184,31 +184,42 @@ nav:has(button + ul) button {
   margin-left: auto;
 }
 
-nav:has(button + ul) button svg {
+nav button svg {
   width: var(--space-6);
   height: var(--space-6);
 }
 
+/* Mobile - afficher le hamburger et cacher le menu */
 @media (max-width: 767px) {
-  nav:has(button + ul) {
+  nav {
     flex-wrap: wrap;
   }
 
-  nav:has(button + ul) button {
+  /* Afficher le bouton hamburger sur mobile */
+  nav button {
     display: flex;
   }
 
-  nav:has(button + ul) ul {
+  /* Cacher le menu par défaut sur mobile */
+  nav ul {
     display: none;
     width: 100%;
     flex-direction: column;
     gap: var(--space-2);
   }
 
-  /* Révélation du menu mobile via JS (classe .open) */
-  nav:has(button + ul).open ul,
-  nav:has(button + ul) button:focus + ul {
+  /* Révéler le menu quand .open est ajouté via JS */
+  nav.open ul {
     display: flex;
+  }
+
+  nav ul li {
+    width: 100%;
+  }
+
+  nav ul li a {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
 

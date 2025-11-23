@@ -11,11 +11,38 @@
      * Initialise tous les modules NoCSS
      */
     init() {
+      this.navigation.init();
       this.tabs.init();
       this.modals.init();
       this.codeViewer.init();
       this.overlays.init();
       console.log('NoCSS initialized');
+    },
+
+    /**
+     * Module Navigation (mobile hamburger)
+     */
+    navigation: {
+      init() {
+        // Gérer le menu hamburger mobile
+        document.querySelectorAll('nav button').forEach(button => {
+          button.addEventListener('click', (e) => {
+            e.preventDefault();
+            const nav = button.closest('nav');
+            nav.classList.toggle('open');
+          });
+        });
+
+        // Fermer le menu mobile quand on clique sur un lien
+        document.querySelectorAll('nav ul a').forEach(link => {
+          link.addEventListener('click', () => {
+            const nav = link.closest('nav');
+            if (nav.classList.contains('open')) {
+              nav.classList.remove('open');
+            }
+          });
+        });
+      }
     },
 
     /**
