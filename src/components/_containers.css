@@ -258,6 +258,8 @@ ul > li {
 
 /* Avatar images in list items */
 ul > li > img {
+  width: 48px;
+  height: 48px;
   flex-shrink: 0;
   border-radius: var(--radius-full);
   aspect-ratio: 1;
