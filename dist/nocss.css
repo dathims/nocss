@@ -2982,8 +2982,21 @@ article table {
     white-space: nowrap;
   }
 
+  thead,
+  tbody {
+    display: block;
+    width: 100%;
+  }
+
+  tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
   th,
   td {
+    display: table-cell;
     padding: var(--space-2);
     font-size: var(--text-xs);
   }
