@@ -723,15 +723,142 @@
     },
 
     /**
-     * Module Sidebar Observer
-     * Détecte la section visible et met à jour la navigation sidebar
+     * Module Sidebar
+     * Gère la sidebar mobile avec toggle button et le scroll spy
      */
     sidebar: {
-      init() {
-        const sidebar = document.querySelector('aside nav');
-        if (!sidebar) return;
+      backdrop: null,
 
-        const sidebarLinks = sidebar.querySelectorAll('a[href^="#"]');
+      init() {
+        const aside = document.querySelector('body > div > aside');
+        if (!aside) return;
+
+        // Ajouter le bouton toggle et le backdrop
+        this.createToggleButton(aside);
+        this.createBackdrop();
+
+        // Gérer les clics sur le bouton toggle dans la sidebar (fermer)
+        const toggleBtn = aside.querySelector('[data-sidebar-toggle]');
+        if (toggleBtn) {
+          toggleBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            this.close();
+          });
+        }
+
+        // Gérer les clics sur les boutons trigger (ouvrir)
+        document.addEventListener('click', (e) => {
+          const trigger = e.target.closest('[data-sidebar-trigger]');
+          if (trigger) {
+            e.preventDefault();
+            this.toggle();
+          }
+        });
+
+        // Fermer la sidebar quand on clique sur un lien (mobile seulement)
+        const sidebarLinks = aside.querySelectorAll('a');
+        sidebarLinks.forEach(link => {
+          link.addEventListener('click', () => {
+            if (window.innerWidth < 768) {
+              this.close();
+            }
+          });
+        });
+
+        // Fermer avec la touche Escape
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape') {
+            const isOpen = aside.getAttribute('data-open') === 'true';
+            if (isOpen && window.innerWidth < 768) {
+              this.close();
+            }
+          }
+        });
+
+        // Initialiser le scroll spy
+        this.initScrollSpy(aside);
+
+        console.log('NoCSS Sidebar: Initialized');
+      },
+
+      createToggleButton(aside) {
+        // Vérifier si le bouton existe déjà
+        if (aside.querySelector('[data-sidebar-toggle]')) return;
+
+        const button = document.createElement('button');
+        button.setAttribute('data-sidebar-toggle', '');
+        button.setAttribute('aria-label', 'Close sidebar');
+        button.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+          </svg>
+        `;
+        aside.insertBefore(button, aside.firstChild);
+      },
+
+      createBackdrop() {
+        // Vérifier si le backdrop existe déjà
+        if (document.querySelector('[data-sidebar-backdrop]')) {
+          this.backdrop = document.querySelector('[data-sidebar-backdrop]');
+          return;
+        }
+
+        this.backdrop = document.createElement('div');
+        this.backdrop.setAttribute('data-sidebar-backdrop', '');
+        this.backdrop.setAttribute('data-open', 'false');
+        this.backdrop.addEventListener('click', () => this.close());
+        document.body.appendChild(this.backdrop);
+      },
+
+      open() {
+        const aside = document.querySelector('body > div > aside');
+        if (!aside) return;
+
+        aside.setAttribute('data-open', 'true');
+        if (this.backdrop) {
+          this.backdrop.setAttribute('data-open', 'true');
+        }
+
+        // Empêcher le scroll du body sur mobile
+        if (window.innerWidth < 768) {
+          document.body.style.overflow = 'hidden';
+        }
+
+        console.log('NoCSS Sidebar: Opened');
+      },
+
+      close() {
+        const aside = document.querySelector('body > div > aside');
+        if (!aside) return;
+
+        aside.setAttribute('data-open', 'false');
+        if (this.backdrop) {
+          this.backdrop.setAttribute('data-open', 'false');
+        }
+
+        // Restaurer le scroll du body
+        document.body.style.overflow = '';
+
+        console.log('NoCSS Sidebar: Closed');
+      },
+
+      toggle() {
+        const aside = document.querySelector('body > div > aside');
+        if (!aside) return;
+
+        const isOpen = aside.getAttribute('data-open') === 'true';
+        if (isOpen) {
+          this.close();
+        } else {
+          this.open();
+        }
+      },
+
+      initScrollSpy(aside) {
+        const nav = aside.querySelector('nav');
+        if (!nav) return;
+
+        const sidebarLinks = nav.querySelectorAll('a[href^="#"]');
         const sections = Array.from(sidebarLinks).map(link => {
           const id = link.getAttribute('href').substring(1);
           return document.getElementById(id);
@@ -755,7 +882,7 @@
                 link.removeAttribute('aria-current');
               });
               // Add aria-current au lien correspondant
-              const activeLink = sidebar.querySelector(`a[href="#${id}"]`);
+              const activeLink = nav.querySelector(`a[href="#${id}"]`);
               if (activeLink) {
                 activeLink.setAttribute('aria-current', 'location');
               }

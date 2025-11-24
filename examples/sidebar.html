@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mobile Sidebar - NoCSS</title>
+  <link rel="stylesheet" href="../dist/nocss.css">
+  <script src="../dist/component-loader.js"></script>
+  <script src="../dist/nocss.js" defer></script>
+</head>
+<body>
+  <!-- Navigation Component -->
+  <header data-component="header"></header>
+
+  <!-- Main Layout with Sidebar -->
+  <div>
+    <!-- Sidebar (position: left par défaut) -->
+    <aside>
+      <nav>
+        <h3>Table of Contents</h3>
+        <a href="#introduction">Introduction</a>
+        <a href="#usage">Usage</a>
+        <a href="#mobile">Mobile Behavior</a>
+        <a href="#desktop">Desktop Behavior</a>
+        <a href="#positioning">Positioning</a>
+        <a href="#examples">Examples</a>
+        <a href="#api">API Reference</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main>
+      <header>
+        <h1>Mobile Sidebar</h1>
+        <p>A responsive sidebar that slides in from the left or right on mobile devices.</p>
+
+        <!-- Bouton pour ouvrir la sidebar (visible seulement sur mobile) -->
+        <button data-sidebar-trigger>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"/>
+          </svg>
+          Open Sidebar
+        </button>
+      </header>
+
+      <!-- Introduction Section -->
+      <section id="introduction">
+        <h2>Introduction</h2>
+        <p>The mobile sidebar is a responsive component that automatically adapts to screen size:</p>
+        <ul>
+          <li><strong>Mobile (< 768px)</strong>: Sidebar hidden by default, slides in when triggered</li>
+          <li><strong>Desktop (≥ 768px)</strong>: Sidebar always visible and sticky</li>
+        </ul>
+
+        <div role="alert" data-type="info">
+          <strong>Try it now!</strong>
+          <p>If you're on a mobile device or narrow browser window, click the "Open Sidebar" button above to see the sidebar slide in.</p>
+        </div>
+      </section>
+
+      <!-- Usage Section -->
+      <section id="usage">
+        <h2>Usage</h2>
+        <p>To use the mobile sidebar, wrap your <code>&lt;aside&gt;</code> and <code>&lt;main&gt;</code> in a container div:</p>
+
+        <pre data-lang="html"><code>&lt;div&gt;
+  &lt;aside&gt;
+    &lt;nav&gt;
+      &lt;h3&gt;Navigation&lt;/h3&gt;
+      &lt;a href="#section1"&gt;Section 1&lt;/a&gt;
+      &lt;a href="#section2"&gt;Section 2&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+
+  &lt;main&gt;
+    &lt;!-- Add trigger button for mobile --&gt;
+    &lt;button data-sidebar-trigger&gt;
+      &lt;svg&gt;...&lt;/svg&gt;
+      Open Sidebar
+    &lt;/button&gt;
+
+    &lt;!-- Your content --&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+      </section>
+
+      <!-- Mobile Behavior Section -->
+      <section id="mobile">
+        <h2>Mobile Behavior</h2>
+        <p>On mobile devices (screen width < 768px), the sidebar:</p>
+        <ul>
+          <li>Is hidden by default (positioned off-screen)</li>
+          <li>Slides in with a smooth animation when triggered</li>
+          <li>Shows a backdrop overlay to focus attention</li>
+          <li>Can be closed by:
+            <ul>
+              <li>Clicking the X button inside the sidebar</li>
+              <li>Clicking the backdrop</li>
+              <li>Pressing the Escape key</li>
+              <li>Clicking any link in the sidebar</li>
+            </ul>
+          </li>
+          <li>Prevents body scrolling when open</li>
+        </ul>
+
+        <article>
+          <h3>Features</h3>
+          <ul>
+            <li><strong>Smooth transitions</strong>: Uses CSS transitions for fluid animations</li>
+            <li><strong>Touch-friendly</strong>: Large tap targets and swipe gestures</li>
+            <li><strong>Accessible</strong>: Keyboard navigation and ARIA attributes</li>
+            <li><strong>Lightweight</strong>: No external dependencies, pure CSS and vanilla JavaScript</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Desktop Behavior Section -->
+      <section id="desktop">
+        <h2>Desktop Behavior</h2>
+        <p>On desktop devices (screen width ≥ 768px), the sidebar:</p>
+        <ul>
+          <li>Is always visible</li>
+          <li>Sticky positioned (follows you as you scroll)</li>
+          <li>Fixed width of 280px</li>
+          <li>The trigger button is hidden (not needed)</li>
+        </ul>
+
+        <p>The sidebar automatically highlights the current section as you scroll using an Intersection Observer.</p>
+      </section>
+
+      <!-- Positioning Section -->
+      <section id="positioning">
+        <h2>Positioning</h2>
+        <p>By default, the sidebar slides in from the <strong>left</strong>. You can change this to slide from the <strong>right</strong> by adding the <code>data-position="right"</code> attribute:</p>
+
+        <pre data-lang="html"><code>&lt;aside data-position="right"&gt;
+  &lt;nav&gt;
+    &lt;!-- Navigation content --&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;</code></pre>
+
+        <article>
+          <h3>Position Options</h3>
+          <ul>
+            <li><code>data-position="left"</code> (default): Slides in from the left</li>
+            <li><code>data-position="right"</code>: Slides in from the right</li>
+          </ul>
+        </article>
+      </section>
+
+      <!-- Examples Section -->
+      <section id="examples">
+        <h2>Examples</h2>
+
+        <article>
+          <h3>Basic Sidebar</h3>
+          <pre data-lang="html"><code>&lt;div&gt;
+  &lt;aside&gt;
+    &lt;nav&gt;
+      &lt;a href="#home"&gt;Home&lt;/a&gt;
+      &lt;a href="#about"&gt;About&lt;/a&gt;
+      &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+
+  &lt;main&gt;
+    &lt;button data-sidebar-trigger&gt;Menu&lt;/button&gt;
+    &lt;!-- Content --&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article>
+          <h3>Right-Side Sidebar</h3>
+          <pre data-lang="html"><code>&lt;div&gt;
+  &lt;aside data-position="right"&gt;
+    &lt;nav&gt;
+      &lt;h3&gt;Quick Links&lt;/h3&gt;
+      &lt;a href="#docs"&gt;Documentation&lt;/a&gt;
+      &lt;a href="#api"&gt;API Reference&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/aside&gt;
+
+  &lt;main&gt;
+    &lt;button data-sidebar-trigger&gt;
+      &lt;svg&gt;...&lt;/svg&gt;
+      Show Info
+    &lt;/button&gt;
+    &lt;!-- Content --&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+        </article>
+
+        <article>
+          <h3>Sidebar with Scroll Spy</h3>
+          <p>The sidebar automatically tracks which section is visible and highlights the corresponding link:</p>
+          <pre data-lang="html"><code>&lt;aside&gt;
+  &lt;nav&gt;
+    &lt;a href="#intro"&gt;Introduction&lt;/a&gt;
+    &lt;a href="#features"&gt;Features&lt;/a&gt;
+    &lt;a href="#usage"&gt;Usage&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/aside&gt;
+
+&lt;main&gt;
+  &lt;section id="intro"&gt;...&lt;/section&gt;
+  &lt;section id="features"&gt;...&lt;/section&gt;
+  &lt;section id="usage"&gt;...&lt;/section&gt;
+&lt;/main&gt;</code></pre>
+        </article>
+      </section>
+
+      <!-- API Reference Section -->
+      <section id="api">
+        <h2>API Reference</h2>
+
+        <article>
+          <h3>HTML Attributes</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Attribute</th>
+                <th>Element</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>data-sidebar-trigger</code></td>
+                <td><code>&lt;button&gt;</code></td>
+                <td>Opens/closes the sidebar when clicked</td>
+              </tr>
+              <tr>
+                <td><code>data-position</code></td>
+                <td><code>&lt;aside&gt;</code></td>
+                <td>Set to "left" (default) or "right"</td>
+              </tr>
+              <tr>
+                <td><code>data-open</code></td>
+                <td><code>&lt;aside&gt;</code></td>
+                <td>Automatically set to "true" or "false" by JavaScript</td>
+              </tr>
+            </tbody>
+          </table>
+        </article>
+
+        <article>
+          <h3>JavaScript API</h3>
+          <p>You can control the sidebar programmatically using the NoCSS JavaScript API:</p>
+
+          <pre data-lang="javascript"><code>// Open the sidebar
+NoCSS.sidebar.open();
+
+// Close the sidebar
+NoCSS.sidebar.close();
+
+// Toggle the sidebar
+NoCSS.sidebar.toggle();</code></pre>
+        </article>
+
+        <article>
+          <h3>CSS Custom Properties</h3>
+          <p>You can customize the sidebar appearance using CSS variables:</p>
+
+          <pre data-lang="css"><code>/* Sidebar width on mobile */
+aside {
+  width: 280px; /* Default */
+  max-width: 85vw; /* Default */
+}
+
+/* Animation duration */
+aside {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Backdrop opacity */
+[data-sidebar-backdrop] {
+  background-color: rgba(0, 0, 0, 0.5);
+}</code></pre>
+        </article>
+      </section>
+
+      <section>
+        <h2>Browser Support</h2>
+        <p>The mobile sidebar works in all modern browsers that support:</p>
+        <ul>
+          <li>CSS Grid</li>
+          <li>CSS Transforms</li>
+          <li>CSS Transitions</li>
+          <li>Intersection Observer API (for scroll spy)</li>
+        </ul>
+
+        <div role="alert" data-type="success">
+          <strong>Works everywhere!</strong>
+          <p>Compatible with Chrome, Firefox, Safari, Edge, and all modern mobile browsers.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Footer Component -->
+  <footer data-component="footer"></footer>
+</body>
+</html>

@@ -59,10 +59,110 @@ body > div > aside {
   align-self: stretch; /* Prend toute la hauteur de la grille */
 }
 
+/* Mobile sidebar (drawer) */
+@media (max-width: 767px) {
+  body > div > aside {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 280px;
+    max-width: 85vw;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Sidebar positionnée à droite */
+  body > div > aside[data-position="right"] {
+    left: auto;
+    right: 0;
+    border-right: none;
+    border-left: 1px solid var(--color-border);
+    transform: translateX(100%);
+    box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Sidebar ouverte */
+  body > div > aside[data-open="true"] {
+    transform: translateX(0);
+  }
+
+  /* Toggle button pour mobile sidebar */
+  body > div > aside > button[data-sidebar-toggle] {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    z-index: 1001;
+  }
+
+  body > div > aside[data-position="right"] > button[data-sidebar-toggle] {
+    right: auto;
+    left: 1rem;
+  }
+}
+
+/* Desktop sidebar (comportement actuel) */
 @media (min-width: 768px) {
   body > div > aside {
     position: sticky;
     top: 73px;
+  }
+
+  /* Masquer le toggle button sur desktop */
+  body > div > aside > button[data-sidebar-toggle] {
+    display: none;
+  }
+}
+
+/* Backdrop pour mobile sidebar */
+[data-sidebar-backdrop] {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+[data-sidebar-backdrop][data-open="true"] {
+  display: block;
+  opacity: 1;
+}
+
+@media (min-width: 768px) {
+  [data-sidebar-backdrop] {
+    display: none !important;
+  }
+}
+
+/* Bouton pour ouvrir la sidebar sur mobile */
+[data-sidebar-trigger] {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Masquer le trigger button sur desktop si sidebar visible */
+@media (min-width: 768px) {
+  body > div:has(> aside + main) [data-sidebar-trigger] {
+    display: none;
   }
 }
 
