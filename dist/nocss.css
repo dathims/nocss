@@ -1775,20 +1775,6 @@ body > footer {
   margin-top: auto;
 }
 
-/* Mobile: sidebar hidden, stacked display */
-
-@media (max-width: 767px) {
-  body > div:has(> aside + main) {
-    grid-template-columns: 1fr;
-  }
-
-  body > div > aside {
-    position: static;
-    border-right: none;
-    border-bottom: 1px solid var(--color-border);
-  }
-}
-
 /* Header */
 
 header {
@@ -2137,48 +2123,6 @@ aside {
   padding: var(--space-6);
   background-color: var(--color-background-secondary);
   border-radius: var(--radius-lg);
-}
-
-/* Layout avec aside (main + aside ou aside + main) - LEGACY pour divs sans structure body > div */
-
-div:has(> main + aside),
-div:has(> aside + main) {
-  display: grid;
-  gap: 0;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 768px) {
-  /* Aside après main (sidebar droite) */
-  div:has(> main + aside) {
-    grid-template-columns: 1fr 320px;
-  }
-
-  /* Aside avant main (sidebar gauche) */
-  div:has(> aside + main) {
-    grid-template-columns: 280px 1fr;
-  }
-}
-
-/* Mobile : hide aside by default, show main as priority */
-
-@media (max-width: 767px) {
-  div:has(> aside > nav) aside {
-    display: none;
-  }
-
-  /* Toggle to show sidebar sur mobile (via JS) */
-  div:has(> aside > nav).sidebar-open aside {
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    width: 280px;
-    background-color: var(--color-background);
-    z-index: var(--z-modal);
-    box-shadow: var(--shadow-xl);
-  }
 }
 
 /* Dialog (modal pattern) */
