@@ -35,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - ~60KB minified CSS
 - Zero JavaScript dependencies for styling
 
-## [0.1.0] - 2025-01-XX
+## [0.1.0] - 2024-11-24
 
 ### Added
 - Initial public release
@@ -43,6 +43,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - GitHub Pages deployment
 - npm package setup
 - CDN distribution
+- Mobile sidebar with slide transitions
+- Component loader system
+- Syntax highlighting for code blocks
+- Theme switcher (auto/light/dark)
+- Responsive navigation
 
 ---
 
