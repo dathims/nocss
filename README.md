@@ -6,16 +6,33 @@
 
 ## Quick Start
 
-### CDN
+### CDN (unpkg)
 
 ```html
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nocss-framework/dist/nocss.min.css">
+<!-- CSS -->
+<link rel="stylesheet" href="https://unpkg.com/nocss-framework@latest/dist/nocss.min.css">
+
+<!-- Optional: JavaScript helpers -->
+<script src="https://unpkg.com/nocss-framework@latest/dist/nocss.js" defer></script>
 ```
 
 ### npm
 
 ```bash
 npm install nocss-framework
+```
+
+```javascript
+// Import in your JavaScript
+import 'nocss-framework/dist/nocss.css';
+```
+
+### Download
+
+Download the [latest release](https://github.com/dathims/nocss/releases/latest) and include the CSS file:
+
+```html
+<link rel="stylesheet" href="path/to/nocss.min.css">
 ```
 
 ```html

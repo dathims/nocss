@@ -26,6 +26,10 @@
     "type": "git",
     "url": "https://github.com/dathims/nocss.git"
   },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
   "homepage": "https://dathims.github.io/nocss",
   "bugs": {
     "url": "https://github.com/dathims/nocss/issues"
