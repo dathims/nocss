@@ -7,33 +7,32 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Added
-- Initial release of NoCSS framework
-- Classless CSS with intelligent HTML structure detection
-- Component library with 15+ components
-- Dark mode support with system preference detection
-- Responsive design (mobile-first)
-- Syntax highlighting for code blocks
-- Interactive code viewer
-- Modern card components with images and avatars
-- Badge and tag system
-- Stat cards with gradients
-- Message list with avatar support
-- Tab navigation (Chrome-style)
-- Modal dialogs
-- Alert components
-- Form validation styling
-- Table responsive design
+## [0.1.1] - 2024-11-24
 
-### Features
-- Zero classes required
-- Built with `:has()` selector
-- CSS custom properties for theming
-- Semantic HTML only
-- ARIA-aware styling
-- Keyboard navigation support
-- ~60KB minified CSS
-- Zero JavaScript dependencies for styling
+### Added
+- Mobile sidebar with slide transitions (left/right positioning)
+- Backdrop overlay for mobile sidebar
+- Sidebar toggle button with close functionality
+- Keyboard support (Escape key to close sidebar)
+- Scroll spy for sidebar navigation
+- GitHub Actions workflow for automated npm publishing
+- Comprehensive publishing documentation (PUBLISHING.md)
+
+### Fixed
+- Removed conflicting CSS rules for mobile sidebar
+- Fixed sidebar appearing at bottom instead of sliding from side
+- Removed bottom-sticky aside behavior on mobile
+- Component paths now use relative URLs for better compatibility
+
+### Changed
+- Improved sidebar UX with smooth transitions
+- Better mobile navigation experience
+- Component loader now adjusts navigation links dynamically
+
+### Removed
+- Obsolete NPM_PUBLISH.md documentation
+- Backup files (.bak) from repository
+- Legacy sidebar positioning code
 
 ## [0.1.0] - 2024-11-24
 
