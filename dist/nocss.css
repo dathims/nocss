@@ -1303,46 +1303,6 @@ nav > button:not([data-theme]) svg {
     margin-left: var(--space-2);
     order: 10;
   }
-
-  /* Aside nav -> Bottom sticky nav sur mobile */
-  aside {
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    top: auto !important;
-    height: auto !important;
-    z-index: 999 !important;
-    border-right: none !important;
-    border-top: 1px solid var(--color-border) !important;
-    box-shadow: 0 -4px 6px -1px rgb(0 0 0 / 0.1) !important;
-    background-color: var(--color-background) !important;
-  }
-
-  aside nav {
-    flex-direction: row !important;
-    padding: var(--space-2) !important;
-    gap: var(--space-1) !important;
-    overflow-x: auto !important;
-    -webkit-overflow-scrolling: touch;
-  }
-
-  aside nav h3 {
-    display: none;
-  }
-
-  aside nav > a {
-    flex: 0 0 auto !important;
-    padding: var(--space-2) var(--space-3) !important;
-    font-size: var(--text-xs) !important;
-    white-space: nowrap !important;
-    border-radius: var(--radius-base) !important;
-  }
-
-  /* Ajouter padding-bottom au main pour éviter que le contenu soit caché par la nav sticky */
-  main {
-    padding-bottom: calc(60px + var(--space-4)) !important;
-  }
 }
 
 /* Sidebar navigation (aside nav) */
