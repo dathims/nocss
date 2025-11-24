@@ -10,10 +10,26 @@
 
   const ComponentLoader = {
     /**
+     * Détermine le chemin de base selon la profondeur du répertoire
+     */
+    getBasePath() {
+      const path = window.location.pathname;
+
+      // Si dans examples/, remonter d'un niveau
+      if (path.includes('/examples/')) {
+        return '../';
+      }
+
+      // Sinon, chemin racine
+      return './';
+    },
+
+    /**
      * Charge un composant HTML via fetch
      */
     async loadComponent(componentName, placeholder) {
-      const componentPath = `/src/components/${componentName}.html`;
+      const basePath = this.getBasePath();
+      const componentPath = `${basePath}src/components/${componentName}.html`;
 
       try {
         const response = await fetch(componentPath);
@@ -21,7 +37,25 @@
           throw new Error(`HTTP ${response.status}: ${componentPath}`);
         }
 
-        const html = await response.text();
+        let html = await response.text();
+
+        // Ajuster les liens relatifs dans le HTML
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+
+        // Trouver tous les liens et ajuster leurs chemins
+        const links = doc.querySelectorAll('a[href]');
+        links.forEach(link => {
+          const href = link.getAttribute('href');
+          // Ne pas modifier les liens externes, les ancres pures, ou les liens déjà absolus
+          if (href && !href.startsWith('http') && !href.startsWith('//') && !href.startsWith('#')) {
+            link.setAttribute('href', basePath + href);
+          } else if (href && href.startsWith('#')) {
+            // Pour les ancres, ne rien faire (elles fonctionnent sur la page courante)
+          }
+        });
+
+        html = doc.body.innerHTML;
 
         // Remplacer le placeholder par le contenu
         if (placeholder) {
