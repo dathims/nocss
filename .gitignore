@@ -29,4 +29,7 @@ Thumbs.db
 
 # Temporary files
 *.tmp
+*.bak
+*.backup
+*.old
 .cache/
